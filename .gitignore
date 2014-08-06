@@ -1,2 +1,5 @@
 songs/
-_sources/
+output/
+
+Gemfile.lock
+
