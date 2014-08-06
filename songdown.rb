@@ -34,7 +34,7 @@ def compile_songdown(text)
         end
 
         # Verse end marks
-        if line =~ /^---/
+        if line =~ /^-{2}$/
             line = '' # Don't show the end mark
             in_verse = false
             verse_num = 0
