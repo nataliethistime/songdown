@@ -34,7 +34,7 @@ def compile_songdown(text)
         end
 
         # Verse end marks
-        if line =~ /^-{2}$/
+        if line == '---'
             line = '' # Don't show the end mark
             in_verse = false
             verse_num = 0
@@ -45,6 +45,7 @@ def compile_songdown(text)
             line = line.gsub /\s/, '&nbsp;'
             line = "<span class='chords'>#{line}</span>"
         elsif verse_num.even? && !verse_num.zero? && in_verse == true
+            line = line.gsub /\s/, '&nbsp;'
             line = "<span class='lyrics'>#{line}</span>"
         end
 
@@ -65,6 +66,5 @@ files.each do |name|
     text = File.read path
     html = compile_songdown text
     html = TEMPLATE.call :song_html => proc { Handlebars::SafeString.new html }
-    File.write(opath, html)
-    # puts html
+    File.write opath, html
 end
