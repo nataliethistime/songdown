@@ -14,14 +14,55 @@
             font-style: italic;
             margin-left: 5%;
         }
-        body {
+        #song {
             font-family: "Anonymous Pro", monospace;
+            float: left;
+            width: 80%;
+        }
+        #sidebar {
+            width: 20%;
+            float: right;
         }
     </style>
 </head>
 <body>
 
-{{song_html}}
+<div id="song">
+    {{song_html}}
+</div>
+
+<div id="sidebar">
+    <h3>Toolbox</h3>
+
+    <label for="fontSize">Font size: <input type="text" id="fontSize"></label>
+</div>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+
+    // Some default variables...
+    var FONT_SIZE = 16;
+
+    function init() {
+        $('#fontSize').attr('value', FONT_SIZE);
+        setFontSize(FONT_SIZE);
+
+        initEvents();
+    }
+
+    function initEvents() {
+        $('#fontSize').on('change', function() {
+            setFontSize(parseInt($(this).val(), 10));
+        });
+    }
+
+    function setFontSize(size) {
+        size = size || FONT_SIZE;
+        $('#song').css('font-size', size + 'px');
+    }
+
+    $(window.document).on('ready', init);
+</script>
 
 </body>
 </html>
