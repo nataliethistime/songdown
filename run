@@ -1,0 +1,3 @@
+rerun  --pattern "**/*.{songdown,html}" --exit 'ruby songdown.rb'
+
+
