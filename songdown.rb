@@ -13,7 +13,8 @@ FileUtils.mkdir_p INPUT
 FileUtils.mkdir_p OUTPUT
 
 handlebars = Handlebars::Context.new
-TEMPLATE = handlebars.compile File.read File.join cwd, 'index-template.html'
+TEMPLATE = handlebars.compile File.read File.join cwd, 'song-template.html'
+INDEX = handlebars.compile File.read File.join cwd, 'index-template.html'
 
 def compile_songdown(text)
     output = []
@@ -67,8 +68,10 @@ def compile_songdown(text)
 end
 
 files = Dir.entries(INPUT).select { |name| name.split('.').last == 'songdown' }
+names = []
 files.each do |name|
     title = name.gsub /\.songdown$/, '' # Remove .songdown extension
+    names << title
 
     path = File.join INPUT, name
     opath = File.join OUTPUT, title + '.html'
@@ -82,3 +85,5 @@ files.each do |name|
     html = TEMPLATE.call vars
     File.write opath, html
 end
+
+File.write(File.join(cwd, 'index.html'), INDEX.call(:names => names.sort))
