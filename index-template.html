@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Songdown</title>
+    <title>{{title}}</title>
 
     <style type="text/css">
         .chords {
@@ -37,6 +37,8 @@
 </head>
 <body>
 
+<h1 style="text-align: center;">{{title}}</h1>
+
 <div id="song">
     {{song_html}}
 </div>
@@ -62,13 +64,16 @@
     }
 
     function initEvents() {
-        $('#fontSize').on('change', function() {
+        $('#fontSize').off().on('change', function() {
             setFontSize(parseInt($(this).val(), 10));
         });
 
         // Note: a CSS media query handles the hiding of the sidebar and making
         //   sure that none of the verses are cut across pages.
-        $('#printButton').click(window.print);
+        $('#printButton').off().on('click', function(event) {
+            event.preventDefault();
+            window.print();
+        });
     }
 
     function setFontSize(size) {

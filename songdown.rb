@@ -63,10 +63,17 @@ end
 
 files = Dir.entries(INPUT).select { |name| name.split('.').last == 'songdown' }
 files.each do |name|
+    title = name.gsub /\.songdown$/, '' # Remove .songdown extension
+
     path = File.join INPUT, name
-    opath = File.join(OUTPUT, name).gsub! /songdown$/, 'html'
+    opath = File.join OUTPUT, title + '.html'
+
     text = File.read path
-    html = compile_songdown text
-    html = TEMPLATE.call :song_html => proc { Handlebars::SafeString.new html }
+    vars = {
+        :song_html => proc { Handlebars::SafeString.new compile_songdown text },
+        :title => title
+    }
+
+    html = TEMPLATE.call vars
     File.write opath, html
 end
