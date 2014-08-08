@@ -45,14 +45,19 @@ def compile_songdown(text)
         # Bold all the chords, assuming every second line in a verse is comprised of chords.
         if verse_num.odd? && !verse_num.zero? && in_verse == true
             line = line.gsub /\s/, '&nbsp;'
-            line = "<span class='chords'>#{line}</span>"
+            line = "<div class='chords'>#{line}</div>"
         elsif verse_num.even? && !verse_num.zero? && in_verse == true
             line = line.gsub /\s/, '&nbsp;'
-            line = "<span class='lyrics'>#{line}</span>"
+            line = "<div class='lyrics'>#{line}</div>"
         end
 
 
-        line += "<br />\n"
+        if in_verse == true
+            line += "\n"
+        else
+            line += "<br />\n"
+        end
+
         output << line
 
         verse_num += 1 if in_verse
