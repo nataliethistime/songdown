@@ -45,7 +45,7 @@
     <h3>Toolbox</h3>
 
     <label for="fontSize">Font size: <input type="text" id="fontSize"></label>
-    <button type="button" id="printButton">Print</button>
+    <button type="button" id="printButton">Print!</button>
 </div>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -66,18 +66,14 @@
             setFontSize(parseInt($(this).val(), 10));
         });
 
-        $('#printButton').click(printPage);
+        // Note: a CSS media query handles the hiding of the sidebar and making
+        //   sure that none of the verses are cut across pages.
+        $('#printButton').click(window.print);
     }
 
     function setFontSize(size) {
         size = size || FONT_SIZE;
         $('#song').css('font-size', size + 'px');
-    }
-
-    function printPage() {
-        // $('#sidebar').hide();
-        window.print();
-        // $('#sidebar').show();
     }
 
     $(window.document).on('ready', init);
