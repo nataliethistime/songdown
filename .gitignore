@@ -2,4 +2,4 @@ output/
 
 Gemfile.lock
 
-.sublime-*
+*.sublime-*
