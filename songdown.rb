@@ -29,13 +29,15 @@ def compile_songdown(text)
 
         # Verse headers.
         if line =~ /\S+:$/
-            line = "<span class='verse-head'>#{line}</span>"
+            line = "<div class='verse'><span class='verse-head'>#{line}</span>"
             in_verse = true
         end
 
         # Verse end marks
         if line == '---'
-            line = '' # Don't show the end mark
+            # Note: we don't show the '---' bit.
+            line = '</div>'
+
             in_verse = false
             verse_num = 0
         end

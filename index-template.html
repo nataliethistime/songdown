@@ -23,6 +23,16 @@
             width: 20%;
             float: right;
         }
+
+        /* Do this to avoid cutting verses off across pages. */
+        @media print {
+            .verse {
+                page-break-inside: avoid;
+            }
+            #sidebar {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -35,6 +45,7 @@
     <h3>Toolbox</h3>
 
     <label for="fontSize">Font size: <input type="text" id="fontSize"></label>
+    <button type="button" id="printButton">Print</button>
 </div>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -54,11 +65,19 @@
         $('#fontSize').on('change', function() {
             setFontSize(parseInt($(this).val(), 10));
         });
+
+        $('#printButton').click(printPage);
     }
 
     function setFontSize(size) {
         size = size || FONT_SIZE;
         $('#song').css('font-size', size + 'px');
+    }
+
+    function printPage() {
+        // $('#sidebar').hide();
+        window.print();
+        // $('#sidebar').show();
     }
 
     $(window.document).on('ready', init);
