@@ -47,6 +47,10 @@
     <h3>Toolbox</h3>
 
     <label for="fontSize">Font size: <input type="text" id="fontSize"></label>
+    <label for="viewSelector">View Mode: <select id="viewSelector">
+        <option value="0">Lyrics and Chords</option>
+        <option value="1">Just Lyrics</option>
+    </select></label>
     <button type="button" id="printButton">Print!</button>
 </div>
 
@@ -68,6 +72,10 @@
             setFontSize(parseInt($(this).val(), 10));
         });
 
+        $('#viewSelector').off().on('change', function() {
+            changeViewMode($(this).val());
+        })
+
         // Note: a CSS media query handles the hiding of the sidebar and making
         //   sure that none of the verses are cut across pages.
         $('#printButton').off().on('click', function(event) {
@@ -79,6 +87,20 @@
     function setFontSize(size) {
         size = size || FONT_SIZE;
         $('#song').css('font-size', size + 'px');
+    }
+
+    function changeViewMode(mode) {
+        var num = parseInt(mode, 10);
+
+        // Show Chords and Lyrics
+        if (num === 0) {
+            $('.chords, .lyrics').show();
+        }
+        // Lyrics only.
+        else if (num === 1) {
+            $('.chords').hide();
+            $('.lyrics').show();
+        }
     }
 
     $(window.document).on('ready', init);
