@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hillsong - Eagle&#x27;s Wings</title>
+
+    <style type="text/css">
+        .chords {
+            font-weight: bold;
+        }
+        .chords, .lyrics {
+            margin-left: 10%;
+        }
+        .verse-head {
+            font-style: italic;
+            margin-left: 5%;
+        }
+        #song {
+            font-family: "Anonymous Pro", monospace;
+            float: left;
+            width: 80%;
+        }
+        #sidebar {
+            width: 20%;
+            float: right;
+        }
+
+        /* Do this to avoid cutting verses off across pages. */
+        @media print {
+            .verse {
+                page-break-inside: avoid;
+            }
+            #sidebar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1 style="text-align: center;">Hillsong - Eagle&#x27;s Wings</h1>
+
+<div id="song">
+    Key - G<br />
+<br />
+<div class='verse'><span class='verse-head'>Intro:</span>
+<div class='chords'>G</div>
+</div><br />
+<br />
+<div class='verse'><span class='verse-head'>Verse:</span>
+<div class='chords'>Am&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C</div>
+<div class='lyrics'>Here&nbsp;I&nbsp;am&nbsp;waiting,&nbsp;Abide&nbsp;in&nbsp;me&nbsp;I&nbsp;pray</div>
+<div class='chords'>Am&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G</div>
+<div class='lyrics'>Here&nbsp;I&nbsp;am&nbsp;longing&nbsp;for&nbsp;you</div>
+<div class='chords'>Am&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C</div>
+<div class='lyrics'>Hide&nbsp;me&nbsp;in&nbsp;your&nbsp;love,&nbsp;bring&nbsp;me&nbsp;to&nbsp;my&nbsp;knees</div>
+<div class='chords'>Am&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C...D...</div>
+<div class='lyrics'>May&nbsp;I&nbsp;know&nbsp;Jesus&nbsp;more&nbsp;and&nbsp;more</div>
+</div><br />
+<br />
+<div class='verse'><span class='verse-head'>Chorus:</span>
+<div class='chords'>G&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Am</div>
+<div class='lyrics'>Come&nbsp;live&nbsp;in&nbsp;me,&nbsp;all&nbsp;my&nbsp;life</div>
+<div class='chords'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D</div>
+<div class='lyrics'>Take&nbsp;over</div>
+<div class='chords'>G&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Am</div>
+<div class='lyrics'>Come&nbsp;breathe&nbsp;in&nbsp;me&nbsp;and&nbsp;I&nbsp;will&nbsp;rise</div>
+<div class='chords'>&nbsp;&nbsp;&nbsp;&nbsp;D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G</div>
+<div class='lyrics'>On&nbsp;Eagles&nbsp;Wings</div>
+</div><br />
+
+</div>
+
+<div id="sidebar">
+    <h3>Toolbox</h3>
+
+    <label for="fontSize">Font size: <input type="text" id="fontSize"></label>
+    <label for="viewSelector">View Mode: <select id="viewSelector">
+        <option value="0">Lyrics and Chords</option>
+        <option value="1">Just Lyrics</option>
+    </select></label>
+    <button type="button" id="printButton">Print!</button>
+</div>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+
+    // Some default variables...
+    var FONT_SIZE = 16;
+
+    function init() {
+        $('#fontSize').attr('value', FONT_SIZE);
+        setFontSize(FONT_SIZE);
+
+        initEvents();
+    }
+
+    function initEvents() {
+        $('#fontSize').off().on('change', function() {
+            setFontSize(parseInt($(this).val(), 10));
+        });
+
+        $('#viewSelector').off().on('change', function() {
+            changeViewMode($(this).val());
+        })
+
+        // Note: a CSS media query handles the hiding of the sidebar and making
+        //   sure that none of the verses are cut across pages.
+        $('#printButton').off().on('click', function(event) {
+            event.preventDefault();
+            window.print();
+        });
+    }
+
+    function setFontSize(size) {
+        size = size || FONT_SIZE;
+        $('#song').css('font-size', size + 'px');
+    }
+
+    function changeViewMode(mode) {
+        var num = parseInt(mode, 10);
+
+        // Show Chords and Lyrics
+        if (num === 0) {
+            $('.chords, .lyrics').show();
+        }
+        // Lyrics only.
+        else if (num === 1) {
+            $('.chords').hide();
+            $('.lyrics').show();
+        }
+    }
+
+    $(window.document).on('ready', init);
+</script>
+
+</body>
+</html>
