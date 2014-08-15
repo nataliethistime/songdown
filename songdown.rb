@@ -69,12 +69,14 @@ end
 
 files = Dir.entries(INPUT).select { |name| name.split('.').last == 'songdown' }
 names = []
+
 files.each do |name|
     title = name.gsub /\.songdown$/, '' # Remove .songdown extension
-    names << title
+    fname = title.gsub(/\s/, '_') + '.html'
+    names << {:fname => fname, :title => title}
 
     path = File.join INPUT, name
-    opath = File.join OUTPUT, title + '.html'
+    opath = File.join OUTPUT, fname
 
     text = File.read path
     vars = {
@@ -86,4 +88,5 @@ files.each do |name|
     File.write opath, html
 end
 
-File.write(File.join(cwd, 'index.html'), INDEX.call(:names => names.sort))
+sorted = names.sort_by { |hash| hash[:name] }
+File.write(File.join(cwd, 'index.html'), INDEX.call(:names => sorted))
