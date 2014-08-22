@@ -1,1 +1,14 @@
-rerun  --pattern "**/*.{songdown}" --exit 'ruby songdown.rb'
+#!/usr/local/bin/ruby
+
+$LOAD_PATH.unshift File.join(Dir.getwd, 'lib')
+
+require 'songdown'
+
+cwd = Dir.getwd
+songdown = SongDown.new(
+    :input     => File.join(cwd, 'songs'),
+    :output    => File.join(cwd, 'output'),
+    :templates => File.join(cwd, 'lib', 'templates'),
+)
+
+songdown.run
