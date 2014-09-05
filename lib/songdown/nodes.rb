@@ -30,7 +30,11 @@ class SongDown
                 if line =~ SongDown::Tokens::VERSE_HEAD
                     is_verse = true
                     @nodes << SongDown::Nodes::VerseHead.new(line)
+                    next
                 end
+
+                # Do this later... :D
+                # @nodes << SongDown::Nodes::MarkDown.new(line)
             end
 
             if is_verse && verse.size > 0

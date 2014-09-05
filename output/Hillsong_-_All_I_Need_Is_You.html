@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hillsong - All I Need Is You</title>
+
+    <style type="text/css">
+        .chords {
+            font-weight: bold;
+        }
+        .chords, .lyrics {
+            margin-left: 10%;
+        }
+        .verse-head {
+            font-style: italic;
+            margin-left: 5%;
+        }
+        #song {
+            font-family: "Anonymous Pro", monospace;
+            float: left;
+            width: 80%;
+        }
+        #sidebar {
+            width: 20%;
+            float: right;
+        }
+
+        /* Do this to avoid cutting verses off across pages. */
+        @media print {
+            .verse {
+                page-break-inside: avoid;
+            }
+            #sidebar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1 style="text-align: center;">Hillsong - All I Need Is You</h1>
+
+<div id="song">
+    <span class="verse-head">Intro:</span><br />
+<pre class="verse"><div class="chords">C#m  F#m  A  B  C#m  E  Bsus  B</div></pre>
+<span class="verse-head">Verse 1:</span><br />
+<pre class="verse"><div class="chords">C#m                 F#m</div>
+<div class="lyrics">Left my fear by the side of the road</div>
+<div class="chords">A               B</div>
+<div class="lyrics">Hear You speak, won't let go</div>
+<div class="chords">C#m                     E               Bsus  B</div>
+<div class="lyrics">Fall to my knees, as I lift my hands to pray</div>
+<div class="chords">C#m                    F#m</div>
+<div class="lyrics">Got every reason to be here again</div>
+<div class="chords">A                   B</div>
+<div class="lyrics">Father's love that draws me in</div>
+<div class="chords">    C#m               E                   Bsus  B</div>
+<div class="lyrics">And all my eyes wanna see is a glimpse of You</div></pre>
+<span class="verse-head">Chorus:</span><br />
+<pre class="verse"><div class="chords">               F#m</div>
+<div class="lyrics">All I need is You</div>
+<div class="chords">A             E               B</div>
+<div class="lyrics">All I need is You, Lord, is You, Lord</div>
+<div class="chords">              F#m</div>
+<div class="lyrics">All I need is You</div>
+<div class="chords">A             E               B</div>
+<div class="lyrics">All I need is You, Lord, is You, Lord</div></pre>
+<span class="verse-head">Verse 2:</span><br />
+<pre class="verse"><div class="chords">C#m                    F#m</div>
+<div class="lyrics">One more day, and it's not the same</div>
+<div class="chords">     A                B</div>
+<div class="lyrics">Your Spirit calls my heart to sing</div>
+<div class="chords">C#m                       E           Bsus  B</div>
+<div class="lyrics">Drawn to the voice of my Savior once again</div>
+<div class="chords">C#m                        F#m</div>
+<div class="lyrics">Where would my soul be without Your Son</div>
+<div class="chords">A                 B</div>
+<div class="lyrics">Gave His life to save the earth</div>
+<div class="chords">C#m                             E             Bsus B</div>
+<div class="lyrics">Rest in the thought that You're watching over me</div></pre>
+<span class="verse-head">Bridge 1:</span><br />
+<pre class="verse"><div class="chords">      F#m      A</div>
+<div class="lyrics">All I need is You</div>
+<div class="chords">      E        B</div>
+<div class="lyrics">All I need is You</div>
+<div class="chords">      F#m      A</div>
+<div class="lyrics">All I need is You</div>
+<div class="chords">       E       B</div>
+<div class="lyrics">All I need is You</div></pre>
+<span class="verse-head">Other:</span><br />
+<pre class="verse"><div class="chords">A  E  B  F#m  A  E  B</div></pre>
+<span class="verse-head">Bridge 2:</span><br />
+<pre class="verse"><div class="chords">     A  E    B     F#m</div>
+<div class="lyrics">You hold the universe</div>
+<div class="chords">     A  E      B         F#m</div>
+<div class="lyrics">You hold everyone on earth</div>
+<div class="chords">     A  E    B     F#m</div>
+<div class="lyrics">You hold the universe</div>
+<div class="chords">     A  E      B</div>
+<div class="lyrics">You hold, You hold</div></pre>
+</div>
+
+<div id="sidebar">
+    <h3>Toolbox</h3>
+
+    <label for="fontSize">Font size: <input type="text" id="fontSize"></label>
+    <label for="viewSelector">View Mode: <select id="viewSelector">
+        <option value="0">Lyrics and Chords</option>
+        <option value="1">Just Lyrics</option>
+    </select></label>
+    <button type="button" id="printButton">Print!</button>
+</div>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+
+    // Some default variables...
+    var FONT_SIZE = 16;
+
+    function init() {
+        $('#fontSize').attr('value', FONT_SIZE);
+        setFontSize(FONT_SIZE);
+
+        initEvents();
+    }
+
+    function initEvents() {
+        $('#fontSize').off().on('change', function() {
+            setFontSize(parseInt($(this).val(), 10));
+        });
+
+        $('#viewSelector').off().on('change', function() {
+            changeViewMode($(this).val());
+        })
+
+        // Note: a CSS media query handles the hiding of the sidebar and making
+        //   sure that none of the verses are cut across pages.
+        $('#printButton').off().on('click', function(event) {
+            event.preventDefault();
+            window.print();
+        });
+    }
+
+    function setFontSize(size) {
+        size = size || FONT_SIZE;
+        $('#song').css('font-size', size + 'px');
+    }
+
+    function changeViewMode(mode) {
+        var num = parseInt(mode, 10);
+
+        // Show Chords and Lyrics
+        if (num === 0) {
+            $('.chords, .lyrics').show();
+        }
+        // Lyrics only.
+        else if (num === 1) {
+            $('.chords').hide();
+            $('.lyrics').show();
+        }
+    }
+
+    $(window.document).on('ready', init);
+</script>
+
+</body>
+</html>

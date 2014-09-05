@@ -7,7 +7,7 @@ class SongDown
         class Verse < SongDown::Node
             def to_html
                 formatted = @section.each_with_index.map do |line, i|
-                    # Index is zero-indexed
+                    # Index is zero-based
                     i += 1
 
                     if i.odd?
