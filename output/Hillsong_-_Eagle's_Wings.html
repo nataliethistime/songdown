@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hillsong - Eagle&#x27;s Wings</title>
+    <title>Hillsong - Eagle&#39;s Wings</title>
 
     <style type="text/css">
         .chords {
@@ -9,6 +9,9 @@
         }
         .chords, .lyrics {
             margin-left: 10%;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            display: inline;
         }
         .verse-head {
             font-style: italic;
@@ -24,6 +27,10 @@
             float: right;
         }
 
+        pre {
+            margin: 0px;
+        }
+
         /* Do this to avoid cutting verses off across pages. */
         @media print {
             .verse {
@@ -37,29 +44,29 @@
 </head>
 <body>
 
-<h1 style="text-align: center;">Hillsong - Eagle&#x27;s Wings</h1>
+<h1 style="text-align: center;">Hillsong - Eagle&#39;s Wings</h1>
 
-<div id="song">
-    <span class="verse-head">Intro:</span><br />
-<pre class="verse"><div class="chords">G</div></pre>
-<span class="verse-head">Verse:</span><br />
-<pre class="verse"><div class="chords">Am         D         G             C</div>
-<div class="lyrics">Here I am waiting, Abide in me I pray</div>
-<div class="chords">Am         D           G</div>
-<div class="lyrics">Here I am longing for you</div>
-<div class="chords">Am          D          G               C</div>
-<div class="lyrics">Hide me in your love, bring me to my knees</div>
-<div class="chords">Am          D              G                       C...D...</div>
-<div class="lyrics">May I know Jesus more and more</div></pre>
-<span class="verse-head">Chorus:</span><br />
-<pre class="verse"><div class="chords">G            C           Am</div>
-<div class="lyrics">Come live in me, all my life</div>
-<div class="chords">     D</div>
-<div class="lyrics">Take over</div>
-<div class="chords">G               C              Am</div>
-<div class="lyrics">Come breathe in me and I will rise</div>
-<div class="chords">    D      G</div>
-<div class="lyrics">On Eagles Wings</div></pre>
+<div id="song" style="display: none;">
+    <br /><span class="verse-head">Intro:</span><br />
+<div class="verse"><pre class="chords">G<br /></pre></div>
+<br /><span class="verse-head">Verse:</span><br />
+<div class="verse"><pre class="chords">Am         D         G             C<br /></pre>
+<pre class="lyrics">Here I am waiting, Abide in me I pray<br /></pre>
+<pre class="chords">Am         D           G<br /></pre>
+<pre class="lyrics">Here I am longing for you<br /></pre>
+<pre class="chords">Am          D          G               C<br /></pre>
+<pre class="lyrics">Hide me in your love, bring me to my knees<br /></pre>
+<pre class="chords">Am          D              G                       C...D...<br /></pre>
+<pre class="lyrics">May I know Jesus more and more<br /></pre></div>
+<br /><span class="verse-head">Chorus:</span><br />
+<div class="verse"><pre class="chords">G            C           Am<br /></pre>
+<pre class="lyrics">Come live in me, all my life<br /></pre>
+<pre class="chords">     D<br /></pre>
+<pre class="lyrics">Take over<br /></pre>
+<pre class="chords">G               C              Am<br /></pre>
+<pre class="lyrics">Come breathe in me and I will rise<br /></pre>
+<pre class="chords">    D      G<br /></pre>
+<pre class="lyrics">On Eagles Wings<br /></pre></div>
 </div>
 
 <div id="sidebar">
@@ -78,12 +85,14 @@
 
     // Some default variables...
     var FONT_SIZE = 16;
+    var FADE_TIME = 300; // milli-seconds
 
     function init() {
         $('#fontSize').attr('value', FONT_SIZE);
         setFontSize(FONT_SIZE);
 
         initEvents();
+        showContent();
     }
 
     function initEvents() {
@@ -103,6 +112,10 @@
         });
     }
 
+    function showContent() {
+        $('#song').css('display', '').hide().fadeIn(FADE_TIME);
+    }
+
     function setFontSize(size) {
         size = size || FONT_SIZE;
         $('#song').css('font-size', size + 'px');
@@ -113,12 +126,12 @@
 
         // Show Chords and Lyrics
         if (num === 0) {
-            $('.chords, .lyrics').show();
+            $('.chords, .lyrics').fadeIn(FADE_TIME);
         }
         // Lyrics only.
         else if (num === 1) {
-            $('.chords').hide();
-            $('.lyrics').show();
+            $('.chords').fadeOut(FADE_TIME);
+            $('.lyrics').fadeIn(FADE_TIME);
         }
     }
 

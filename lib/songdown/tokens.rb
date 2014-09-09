@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class SongDown
+class Songdown
     class Tokens
         VERSE_END = '---'
         VERSE_HEAD = /:$/

@@ -1,11 +1,13 @@
 # encoding: utf-8
 
 require 'fileutils'
-require 'handlebars'
+require 'mustache'
+Mustache.template_extension = 'html'
 
 require 'songdown/nodes'
+require 'songdown/templates'
 
-class SongDown
+class Songdown
 
     attr_accessor :input
     attr_accessor :output
@@ -14,13 +16,8 @@ class SongDown
     def initialize(args)
         @input_dir  = args[:input]
         @output_dir = args[:output]
-        @tmpl_dir   = args[:templates]
 
-        handlebars = Handlebars::Context.new
-        @templates = {
-            :index => handlebars.compile(File.read(File.join @tmpl_dir, 'index.html')),
-            :song => handlebars.compile(File.read(File.join @tmpl_dir, 'song.html')),
-        }
+        @tmpl_dir = Mustache.template_path = args[:templates]
     end
 
     def get_files
@@ -28,28 +25,28 @@ class SongDown
     end
 
     def generate_nodes(text)
-        nodes = SongDown::Nodes.new text
+        nodes = Songdown::Nodes.new text
         nodes.generate
         nodes
     end
 
-    def write_output(output_path, content)
-        File.write output_path, content
-    end
-
     def run
-        names = []
+        songs_written = []
+
         self.get_files.each do |name|
             title = name.gsub /\.songdown$/, '' # Remove .songdown extension
             fname = title.gsub(/\s/, '_') + '.html'
-            names << {:fname => fname, :title => title}
+            songs_written << {:fname => fname, :title => title}
 
             text = File.read File.join @input_dir, name
             output_path = File.join @output_dir, fname
 
             nodes = self.generate_nodes text
-            html = nodes.render title, @templates[:song]
-            self.write_output output_path, html
+            html = Songdown::Templates::Song.render nodes.vars title
+            File.write output_path, html
         end
+
+        index_html = Songdown::Templates::Index.render songs_written: songs_written
+        File.write File.join(@output_dir, '..', 'index.html'), index_html
     end
 end

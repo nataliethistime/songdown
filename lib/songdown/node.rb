@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class SongDown
+class Songdown
     class Node
         def initialize(section)
             @section = section

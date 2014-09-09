@@ -9,6 +9,9 @@
         }
         .chords, .lyrics {
             margin-left: 10%;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            display: inline;
         }
         .verse-head {
             font-style: italic;
@@ -22,6 +25,10 @@
         #sidebar {
             width: 20%;
             float: right;
+        }
+
+        pre {
+            margin: 0px;
         }
 
         /* Do this to avoid cutting verses off across pages. */
@@ -39,8 +46,8 @@
 
 <h1 style="text-align: center;">{{title}}</h1>
 
-<div id="song">
-    {{song_html}}
+<div id="song" style="display: none;">
+    {{{song_html}}}
 </div>
 
 <div id="sidebar">
@@ -59,12 +66,14 @@
 
     // Some default variables...
     var FONT_SIZE = 16;
+    var FADE_TIME = 300; // milli-seconds
 
     function init() {
         $('#fontSize').attr('value', FONT_SIZE);
         setFontSize(FONT_SIZE);
 
         initEvents();
+        showContent();
     }
 
     function initEvents() {
@@ -84,6 +93,10 @@
         });
     }
 
+    function showContent() {
+        $('#song').css('display', '').hide().fadeIn(FADE_TIME);
+    }
+
     function setFontSize(size) {
         size = size || FONT_SIZE;
         $('#song').css('font-size', size + 'px');
@@ -94,12 +107,12 @@
 
         // Show Chords and Lyrics
         if (num === 0) {
-            $('.chords, .lyrics').show();
+            $('.chords, .lyrics').fadeIn(FADE_TIME);
         }
         // Lyrics only.
         else if (num === 1) {
-            $('.chords').hide();
-            $('.lyrics').show();
+            $('.chords').fadeOut(FADE_TIME);
+            $('.lyrics').fadeIn(FADE_TIME);
         }
     }
 

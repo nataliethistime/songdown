@@ -2,11 +2,11 @@
 
 require 'songdown/node'
 
-class SongDown
+class Songdown
     class Nodes
-        class VerseHead < SongDown::Node
+        class VerseHead < Songdown::Node
             def to_html
-                '<span class="verse-head">' + @section + '</span><br />'
+                '<br /><span class="verse-head">' + @section + '</span><br />'
             end
         end
     end

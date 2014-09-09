@@ -2,22 +2,22 @@
 
 require 'songdown/node'
 
-class SongDown
+class Songdown
     class Nodes
-        class Verse < SongDown::Node
+        class Verse < Songdown::Node
             def to_html
                 formatted = @section.each_with_index.map do |line, i|
                     # Index is zero-based
                     i += 1
 
                     if i.odd?
-                        '<div class="chords">' + line + '</div>'
+                        '<pre class="chords">' + line + '<br /></pre>'
                     else
-                        '<div class="lyrics">' + line + '</div>'
+                        '<pre class="lyrics">' + line + '<br /></pre>'
                     end
                 end
 
-                '<pre class="verse">' + formatted.join("\n") + '</pre>'
+                '<div class="verse">' + formatted.join("\n") + '</div>'
             end
         end
     end

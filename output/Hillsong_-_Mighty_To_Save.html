@@ -9,6 +9,9 @@
         }
         .chords, .lyrics {
             margin-left: 10%;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            display: inline;
         }
         .verse-head {
             font-style: italic;
@@ -22,6 +25,10 @@
         #sidebar {
             width: 20%;
             float: right;
+        }
+
+        pre {
+            margin: 0px;
         }
 
         /* Do this to avoid cutting verses off across pages. */
@@ -39,71 +46,71 @@
 
 <h1 style="text-align: center;">Hillsong - Mighty To Save</h1>
 
-<div id="song">
-    <span class="verse-head">Intro:</span><br />
-<pre class="verse"><div class="chords">C G Em D</div></pre>
-<span class="verse-head">Verse 1:</span><br />
-<pre class="verse"><div class="chords">C                 G</div>
-<div class="lyrics"> Everyone needs compassion</div>
-<div class="chords">                   Em</div>
-<div class="lyrics"> Love that's never failing</div>
-<div class="chords">      D</div>
-<div class="lyrics"> Let mercy fall on me</div>
-<div class="chords">C                      G</div>
-<div class="lyrics"> Everyone needs forgiveness</div>
-<div class="chords">                     Em</div>
-<div class="lyrics"> The kindness of a saviour</div>
-<div class="chords">      D</div>
-<div class="lyrics"> The hope of nations</div></pre>
-<span class="verse-head">Lead-in:</span><br />
-<pre class="verse"><div class="chords">C  D   C  D</div></pre>
-<span class="verse-head">Chorus:</span><br />
-<pre class="verse"><div class="chords">   G</div>
-<div class="lyrics">   Saviour</div>
-<div class="chords">                    D</div>
-<div class="lyrics">   He can move the mountains</div>
-<div class="chords">              Em            C</div>
-<div class="lyrics">   My God is mighty to save</div>
-<div class="chords">         Em          D</div>
-<div class="lyrics">   He is mighty to save</div>
-<div class="chords">     G</div>
-<div class="lyrics">   Forever</div>
-<div class="chords">                 D</div>
-<div class="lyrics">   Author of Salvation</div>
-<div class="chords">               Em                 C</div>
-<div class="lyrics">   He rose and conquered the grave</div>
-<div class="chords">         Em                D</div>
-<div class="lyrics">   Jesus Conquered the grave</div></pre>
-<span class="verse-head">Verse 2:</span><br />
-<pre class="verse"><div class="chords">C                 G</div>
-<div class="lyrics"> So take me as you find me</div>
-<div class="chords"></div>
-<div class="lyrics"> All my fears and failures</div>
-<div class="chords">         Em</div>
-<div class="lyrics"> Fill my life again</div>
-<div class="chords">C                 G</div>
-<div class="lyrics"> I give my life to follow</div>
-<div class="chords">            Em</div>
-<div class="lyrics"> Everything I believe in</div>
-<div class="chords">      D</div>
-<div class="lyrics"> Now I Surrender</div></pre>
-<span class="verse-head">Bridge:</span><br />
-<pre class="verse"><div class="chords"> C                     G</div>
-<div class="lyrics">  Shine your light  and</div>
-<div class="chords">                      D</div>
-<div class="lyrics">  Let the whole world  see</div>
-<div class="chords">        Em      C</div>
-<div class="lyrics">  We're singing  for the glory</div>
-<div class="chords"> G</div>
-<div class="lyrics">  Of the risen  King</div>
-<div class="chords">     C                    G</div>
-<div class="lyrics">  Jesus  Shine your light  and</div>
-<div class="chords">                      D</div>
-<div class="lyrics">  Let the whole world  see</div>
-<div class="chords">        Em      C            G</div>
-<div class="lyrics">  We're singing  for the glory</div>
-<div class="chords">               D</div>
-<div class="lyrics">  Of the risen  King</div></pre>
+<div id="song" style="display: none;">
+    <br /><span class="verse-head">Intro:</span><br />
+<div class="verse"><pre class="chords">C G Em D<br /></pre></div>
+<br /><span class="verse-head">Verse 1:</span><br />
+<div class="verse"><pre class="chords">C                 G<br /></pre>
+<pre class="lyrics"> Everyone needs compassion<br /></pre>
+<pre class="chords">                   Em<br /></pre>
+<pre class="lyrics"> Love that's never failing<br /></pre>
+<pre class="chords">      D<br /></pre>
+<pre class="lyrics"> Let mercy fall on me<br /></pre>
+<pre class="chords">C                      G<br /></pre>
+<pre class="lyrics"> Everyone needs forgiveness<br /></pre>
+<pre class="chords">                     Em<br /></pre>
+<pre class="lyrics"> The kindness of a saviour<br /></pre>
+<pre class="chords">      D<br /></pre>
+<pre class="lyrics"> The hope of nations<br /></pre></div>
+<br /><span class="verse-head">Lead-in:</span><br />
+<div class="verse"><pre class="chords">C  D   C  D<br /></pre></div>
+<br /><span class="verse-head">Chorus:</span><br />
+<div class="verse"><pre class="chords">   G<br /></pre>
+<pre class="lyrics">   Saviour<br /></pre>
+<pre class="chords">                    D<br /></pre>
+<pre class="lyrics">   He can move the mountains<br /></pre>
+<pre class="chords">              Em            C<br /></pre>
+<pre class="lyrics">   My God is mighty to save<br /></pre>
+<pre class="chords">         Em          D<br /></pre>
+<pre class="lyrics">   He is mighty to save<br /></pre>
+<pre class="chords">     G<br /></pre>
+<pre class="lyrics">   Forever<br /></pre>
+<pre class="chords">                 D<br /></pre>
+<pre class="lyrics">   Author of Salvation<br /></pre>
+<pre class="chords">               Em                 C<br /></pre>
+<pre class="lyrics">   He rose and conquered the grave<br /></pre>
+<pre class="chords">         Em                D<br /></pre>
+<pre class="lyrics">   Jesus Conquered the grave<br /></pre></div>
+<br /><span class="verse-head">Verse 2:</span><br />
+<div class="verse"><pre class="chords">C                 G<br /></pre>
+<pre class="lyrics"> So take me as you find me<br /></pre>
+<pre class="chords"><br /></pre>
+<pre class="lyrics"> All my fears and failures<br /></pre>
+<pre class="chords">         Em<br /></pre>
+<pre class="lyrics"> Fill my life again<br /></pre>
+<pre class="chords">C                 G<br /></pre>
+<pre class="lyrics"> I give my life to follow<br /></pre>
+<pre class="chords">            Em<br /></pre>
+<pre class="lyrics"> Everything I believe in<br /></pre>
+<pre class="chords">      D<br /></pre>
+<pre class="lyrics"> Now I Surrender<br /></pre></div>
+<br /><span class="verse-head">Bridge:</span><br />
+<div class="verse"><pre class="chords"> C                     G<br /></pre>
+<pre class="lyrics">  Shine your light  and<br /></pre>
+<pre class="chords">                      D<br /></pre>
+<pre class="lyrics">  Let the whole world  see<br /></pre>
+<pre class="chords">        Em      C<br /></pre>
+<pre class="lyrics">  We're singing  for the glory<br /></pre>
+<pre class="chords"> G<br /></pre>
+<pre class="lyrics">  Of the risen  King<br /></pre>
+<pre class="chords">     C                    G<br /></pre>
+<pre class="lyrics">  Jesus  Shine your light  and<br /></pre>
+<pre class="chords">                      D<br /></pre>
+<pre class="lyrics">  Let the whole world  see<br /></pre>
+<pre class="chords">        Em      C            G<br /></pre>
+<pre class="lyrics">  We're singing  for the glory<br /></pre>
+<pre class="chords">               D<br /></pre>
+<pre class="lyrics">  Of the risen  King<br /></pre></div>
 </div>
 
 <div id="sidebar">
@@ -122,12 +129,14 @@
 
     // Some default variables...
     var FONT_SIZE = 16;
+    var FADE_TIME = 300; // milli-seconds
 
     function init() {
         $('#fontSize').attr('value', FONT_SIZE);
         setFontSize(FONT_SIZE);
 
         initEvents();
+        showContent();
     }
 
     function initEvents() {
@@ -147,6 +156,10 @@
         });
     }
 
+    function showContent() {
+        $('#song').css('display', '').hide().fadeIn(FADE_TIME);
+    }
+
     function setFontSize(size) {
         size = size || FONT_SIZE;
         $('#song').css('font-size', size + 'px');
@@ -157,12 +170,12 @@
 
         // Show Chords and Lyrics
         if (num === 0) {
-            $('.chords, .lyrics').show();
+            $('.chords, .lyrics').fadeIn(FADE_TIME);
         }
         // Lyrics only.
         else if (num === 1) {
-            $('.chords').hide();
-            $('.lyrics').show();
+            $('.chords').fadeOut(FADE_TIME);
+            $('.lyrics').fadeIn(FADE_TIME);
         }
     }
 
