@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lauren Becker - Oceans (Cover) - Guitar Part</title>
+
+    <style type="text/css">
+        .chords {
+            font-weight: bold;
+        }
+        .chords, .lyrics {
+            margin-left: 10%;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            display: inline;
+        }
+        .verse-head {
+            font-style: italic;
+            margin-left: 5%;
+        }
+        #song {
+            font-family: "Anonymous Pro", monospace;
+            float: left;
+            width: 80%;
+        }
+        #sidebar {
+            width: 20%;
+            float: right;
+        }
+
+        pre {
+            margin: 0px;
+        }
+
+        /* Do this to avoid cutting verses off across pages. */
+        @media print {
+            .verse {
+                page-break-inside: avoid;
+            }
+            #sidebar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1 style="text-align: center;">Lauren Becker - Oceans (Cover) - Guitar Part</h1>
+
+<div id="song" style="display: none;">
+    <p>This is the guitar part for this song. It's based off of this <a href="http://tabs.ultimate-guitar.com/h/hillsong_united/oceans_where_feet_may_fail_crd.htm">tab</a></p>
+
+<p>and this <a href="https://www.youtube.com/watch?v=NPhR1McTn-4&amp;feature=youtu.be">Youtube video</a>.</p>
+
+<p><strong>Note:</strong> One day, I'll properly explain how this is meant to be played. :D</p>
+
+<br /><span class="verse-head">Intro:</span><br />
+<div class="verse"><pre class="chords">B C# D A G<br /></pre>
+<pre class="lyrics">B C# D A G<br /></pre></div>
+<br /><span class="verse-head">Verse 1:</span><br />
+<div class="verse"><pre class="chords">B                 C#       D                       A                       G<br /></pre>
+<pre class="lyrics">You call me out upon the waters         The great unknown where feet may fail<br /></pre>
+<pre class="chords">B                     C#     D                     A                    G<br /></pre>
+<pre class="lyrics">And there I find You in the mystery    In oceans deep   My faith will stand<br /></pre></div>
+<br /><span class="verse-head">Chorus:</span><br />
+<div class="verse"><pre class="chords">G           D              A     G            D             A                    G<br /></pre>
+<pre class="lyrics">And I will call upon Your name   And keep my eyes above the waves   When oceans rise<br /></pre>
+<pre class="chords">              D              A                G         (A)     B    C#    D  A  G<br /></pre>
+<pre class="lyrics">My soul will rest in your embrace  For I am Yours  and You are mine<br /></pre></div>
+<br /><span class="verse-head">Verse 2:</span><br />
+<div class="verse"><pre class="chords">B                        C#    D                       A                  G<br /></pre>
+<pre class="lyrics">Your grace abounds in deepest waters   Your sovereign hand   Will be my guide<br /></pre>
+<pre class="chords">B                         C#      D                       A                       G<br /></pre>
+<pre class="lyrics">Where feet may fail and fear surrounds me   You've never failed and you won't start now<br /></pre></div>
+<p>Play <em>Chorus</em></p>
+
+<p>Play <em>Intro</em></p>
+
+<br /><span class="verse-head">Bridge part 1 (x3) (Softly and build up..):</span><br />
+<div class="verse"><pre class="chords">B                            G<br /></pre>
+<pre class="lyrics">   Spirit lead me where my trust is without borders<br /></pre>
+<pre class="chords">           D                           A<br /></pre>
+<pre class="lyrics">   Let me walk upon the waters  Wherever You would call me<br /></pre>
+<pre class="chords">B                          G<br /></pre>
+<pre class="lyrics">   Take me deeper than my feet could ever wander<br /></pre>
+<pre class="chords">            D                                   A<br /></pre>
+<pre class="lyrics">   And my faith will be made stronger   In the presence of my Saviour<br /></pre></div>
+<br /><span class="verse-head">Bridge part 2:</span><br />
+<div class="verse"><pre class="chords">B                            G<br /></pre>
+<pre class="lyrics">   Spirit lead me where my trust is without borders<br /></pre>
+<pre class="chords">            D                          A<br /></pre>
+<pre class="lyrics">   Let me walk upon the waters  Wherever You would call me<br /></pre>
+<pre class="chords">G                          D<br /></pre>
+<pre class="lyrics">   Take me deeper than my feet could ever wander<br /></pre>
+<pre class="chords">            A                                   G<br /></pre>
+<pre class="lyrics">   And my faith will be made stronger   In the presence of my Saviour<br /></pre></div>
+<p>Play <em>Bridge part 1</em> x2</p>
+
+<p>Play <em>Intro</em></p>
+
+<br /><span class="verse-head">Ending Chorus:</span><br />
+<div class="verse"><pre class="chords">G         D              A<br /></pre>
+<pre class="lyrics">  I will call upon Your Name<br /></pre>
+<pre class="chords">G          D              A<br /></pre>
+<pre class="lyrics">  Keep my eyes above the waves<br /></pre>
+<pre class="chords">G              D              A<br /></pre>
+<pre class="lyrics">  My soul will rest in Your embrace<br /></pre>
+<pre class="chords">       G       (A)      B    C#    D  A  G  B    C#    D  (Stay on D)<br /></pre>
+<pre class="lyrics">I am Yours and You are mine<br /></pre></div>
+</div>
+
+<div id="sidebar">
+    <h3>Toolbox</h3>
+
+    <label for="fontSize">Font size: <input type="text" id="fontSize"></label>
+    <label for="viewSelector">View Mode: <select id="viewSelector">
+        <option value="0">Lyrics and Chords</option>
+        <option value="1">Just Lyrics</option>
+    </select></label>
+    <button type="button" id="printButton">Print!</button>
+</div>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+
+    // Some default variables...
+    var FONT_SIZE = 16;
+    var FADE_TIME = 300; // milli-seconds
+
+    function init() {
+        $('#fontSize').attr('value', FONT_SIZE);
+        setFontSize(FONT_SIZE);
+
+        initEvents();
+        showContent();
+    }
+
+    function initEvents() {
+        $('#fontSize').off().on('change', function() {
+            setFontSize(parseInt($(this).val(), 10));
+        });
+
+        $('#viewSelector').off().on('change', function() {
+            changeViewMode($(this).val());
+        })
+
+        // Note: a CSS media query handles the hiding of the sidebar and making
+        //   sure that none of the verses are cut across pages.
+        $('#printButton').off().on('click', function(event) {
+            event.preventDefault();
+            window.print();
+        });
+    }
+
+    function showContent() {
+        $('#song').css('display', '').hide().fadeIn(FADE_TIME);
+    }
+
+    function setFontSize(size) {
+        size = size || FONT_SIZE;
+        $('#song').css('font-size', size + 'px');
+    }
+
+    function changeViewMode(mode) {
+        var num = parseInt(mode, 10);
+
+        // Show Chords and Lyrics
+        if (num === 0) {
+            $('.chords, .lyrics').fadeIn(FADE_TIME);
+        }
+        // Lyrics only.
+        else if (num === 1) {
+            $('.chords').fadeOut(FADE_TIME);
+            $('.lyrics').fadeIn(FADE_TIME);
+        }
+    }
+
+    $(window.document).on('ready', init);
+</script>
+
+</body>
+</html>
