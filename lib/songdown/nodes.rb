@@ -3,6 +3,7 @@
 require 'songdown/tokens'
 require 'songdown/nodes/verse'
 require 'songdown/nodes/verse_head'
+require 'songdown/nodes/markdown'
 
 
 class Songdown
@@ -33,8 +34,8 @@ class Songdown
                     next
                 end
 
-                # Do this later... :D
-                # @nodes << Songdown::Nodes::MarkDown.new(line)
+                # If it's not anything else, we'll parse it as Markdown.
+                @nodes << Songdown::Nodes::Markdown.new(line)
             end
 
             if is_verse && verse.size > 0
