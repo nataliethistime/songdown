@@ -23,6 +23,9 @@ class Songdown
 
             section.split(Songdown::Tokens::NEWLINE).each do |line|
 
+                # Skip empty lines
+                next unless line.size > 0
+
                 if is_verse && line != Songdown::Tokens::VERSE_END
                     verse << line
                     next
