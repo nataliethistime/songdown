@@ -8,7 +8,7 @@ class Songdown
     class Nodes
         class Markdown < Songdown::Node
             def to_html
-                Kramdown::Document.new(@section, input: 'GFM').to_html
+                Kramdown::Document.new(@section, input: 'markdown').to_html
             end
         end
     end
