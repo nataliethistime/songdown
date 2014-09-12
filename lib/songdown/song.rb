@@ -7,13 +7,11 @@ require 'songdown/nodes/markdown'
 
 
 class Songdown
-    class Nodes
+    class Song
         def initialize(text)
             @text = text
             @nodes = []
-        end
 
-        def generate
             @text.split(Songdown::Tokens::VERSE_END).each { |s| self.parse_section s }
         end
 
