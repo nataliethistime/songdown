@@ -63,12 +63,5 @@ class Songdown
         def to_html
             @nodes.map(&:to_html).join "\n"
         end
-
-        def vars(title)
-            {
-                :song_html => self.to_html,
-                :title => title,
-            }
-        end
     end
 end

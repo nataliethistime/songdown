@@ -42,7 +42,11 @@ class Songdown
             output_path = File.join @output_dir, fname
 
             nodes = self.generate_nodes text
-            html = Songdown::Templates::Song.render nodes.vars title
+            vars = {
+                song_html: nodes.to_html,
+                title: title,
+            }
+            html = Songdown::Templates::Song.render vars
             File.write output_path, html
         end
 
