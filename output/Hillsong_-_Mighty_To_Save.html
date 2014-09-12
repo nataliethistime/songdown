@@ -8,27 +8,32 @@
             font-weight: bold;
         }
         .chords, .lyrics {
-            margin-left: 10%;
-            margin-top: 0px;
-            margin-bottom: 0px;
+            margin-left: 10vw;
+            margin-top: 0;
+            margin-bottom: 0;
             display: inline;
         }
         .verse-head {
             font-style: italic;
-            margin-left: 5%;
+            margin-left: 5vw;
+        }
+        #song-parent {
+            height: 100vh;
+            overflow: auto;
+            width: 75vw;
+            float: left;
         }
         #song {
             font-family: "Anonymous Pro", monospace;
-            float: left;
-            width: 80%;
         }
         #sidebar {
-            width: 20%;
+            width: 20vw;
             float: right;
         }
 
-        pre {
-            margin: 0px;
+        body {
+            margin: 4px;
+            overflow: hidden;
         }
 
         /* Do this to avoid cutting verses off across pages. */
@@ -44,10 +49,10 @@
 </head>
 <body>
 
-<h1 style="text-align: center;">Hillsong - Mighty To Save</h1>
-
-<div id="song" style="display: none;">
-    
+<div id="song-parent">
+    <div id="song" style="display: none;">
+        <h1 style="text-align: center;">Hillsong - Mighty To Save</h1>
+        
 
 <br /><span class="verse-head">Intro:</span><br />
 <div class="verse"><pre class="chords">C G Em D<br /></pre></div>
@@ -94,15 +99,17 @@
 <br /><span class="verse-head">Verse 2:</span><br />
 <div class="verse"><pre class="chords">C                 G<br /></pre>
 <pre class="lyrics"> So take me as you find me<br /></pre>
-<pre class="chords"> All my fears and failures<br /></pre>
-<pre class="lyrics">         Em<br /></pre>
-<pre class="chords"> Fill my life again<br /></pre>
-<pre class="lyrics">C                 G<br /></pre>
-<pre class="chords"> I give my life to follow<br /></pre>
-<pre class="lyrics">            Em<br /></pre>
-<pre class="chords"> Everything I believe in<br /></pre>
-<pre class="lyrics">      D<br /></pre>
-<pre class="chords"> Now I Surrender<br /></pre></div>
+<pre class="chords"><br /></pre>
+<pre class="lyrics"> All my fears and failures<br /></pre>
+<pre class="chords">         Em<br /></pre>
+<pre class="lyrics"> Fill my life again<br /></pre>
+<pre class="chords">C                 G<br /></pre>
+<pre class="lyrics"> I give my life to follow<br /></pre>
+<pre class="chords">            Em<br /></pre>
+<pre class="lyrics"> Everything I believe in<br /></pre>
+<pre class="chords">      D<br /></pre>
+<pre class="lyrics"> Now I Surrender<br /></pre></div>
+
 <p>Lead-in
 Chorus</p>
 
@@ -123,6 +130,7 @@ Chorus</p>
 <pre class="lyrics">  We're singing  for the glory<br /></pre>
 <pre class="chords">               D<br /></pre>
 <pre class="lyrics">  Of the risen  King<br /></pre></div>
+    </div>
 </div>
 
 <div id="sidebar">

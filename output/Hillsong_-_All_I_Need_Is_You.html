@@ -8,27 +8,32 @@
             font-weight: bold;
         }
         .chords, .lyrics {
-            margin-left: 10%;
-            margin-top: 0px;
-            margin-bottom: 0px;
+            margin-left: 10vw;
+            margin-top: 0;
+            margin-bottom: 0;
             display: inline;
         }
         .verse-head {
             font-style: italic;
-            margin-left: 5%;
+            margin-left: 5vw;
+        }
+        #song-parent {
+            height: 100vh;
+            overflow: auto;
+            width: 75vw;
+            float: left;
         }
         #song {
             font-family: "Anonymous Pro", monospace;
-            float: left;
-            width: 80%;
         }
         #sidebar {
-            width: 20%;
+            width: 20vw;
             float: right;
         }
 
-        pre {
-            margin: 0px;
+        body {
+            margin: 4px;
+            overflow: hidden;
         }
 
         /* Do this to avoid cutting verses off across pages. */
@@ -44,10 +49,10 @@
 </head>
 <body>
 
-<h1 style="text-align: center;">Hillsong - All I Need Is You</h1>
-
-<div id="song" style="display: none;">
-    
+<div id="song-parent">
+    <div id="song" style="display: none;">
+        <h1 style="text-align: center;">Hillsong - All I Need Is You</h1>
+        
 
 <br /><span class="verse-head">Intro:</span><br />
 <div class="verse"><pre class="chords">C#m  F#m  A  B  C#m  E  Bsus  B<br /></pre></div>
@@ -118,6 +123,7 @@
 <pre class="lyrics">You hold the universe<br /></pre>
 <pre class="chords">     A  E      B<br /></pre>
 <pre class="lyrics">You hold, You hold<br /></pre></div>
+    </div>
 </div>
 
 <div id="sidebar">

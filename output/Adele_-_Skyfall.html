@@ -8,27 +8,32 @@
             font-weight: bold;
         }
         .chords, .lyrics {
-            margin-left: 10%;
-            margin-top: 0px;
-            margin-bottom: 0px;
+            margin-left: 10vw;
+            margin-top: 0;
+            margin-bottom: 0;
             display: inline;
         }
         .verse-head {
             font-style: italic;
-            margin-left: 5%;
+            margin-left: 5vw;
+        }
+        #song-parent {
+            height: 100vh;
+            overflow: auto;
+            width: 75vw;
+            float: left;
         }
         #song {
             font-family: "Anonymous Pro", monospace;
-            float: left;
-            width: 80%;
         }
         #sidebar {
-            width: 20%;
+            width: 20vw;
             float: right;
         }
 
-        pre {
-            margin: 0px;
+        body {
+            margin: 4px;
+            overflow: hidden;
         }
 
         /* Do this to avoid cutting verses off across pages. */
@@ -44,14 +49,15 @@
 </head>
 <body>
 
-<h1 style="text-align: center;">Adele - Skyfall</h1>
-
-<div id="song" style="display: none;">
-    <p><em>Key Cm</em></p>
+<div id="song-parent">
+    <div id="song" style="display: none;">
+        <h1 style="text-align: center;">Adele - Skyfall</h1>
+        <p><em>Key Cm</em></p>
 
 <br /><span class="verse-head">Intro:</span><br />
 <div class="verse"><pre class="chords">Cm  Ab  F x 3<br /></pre>
-<pre class="lyrics">Cm7/D#  Gsus4   G<br /></pre></div>
+<pre class="lyrics"><br /></pre>
+<pre class="chords">Cm7/D#  Gsus4   G<br /></pre></div>
 
 
 <br /><span class="verse-head">Verse 1:</span><br />
@@ -181,6 +187,7 @@
 <pre class="lyrics">At sky-fall<br /></pre>
 <pre class="chords">            Cm<br /></pre>
 <pre class="lyrics">Ooooo-ooooo-ooooo<br /></pre></div>
+    </div>
 </div>
 
 <div id="sidebar">

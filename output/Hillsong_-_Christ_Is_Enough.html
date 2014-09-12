@@ -8,27 +8,32 @@
             font-weight: bold;
         }
         .chords, .lyrics {
-            margin-left: 10%;
-            margin-top: 0px;
-            margin-bottom: 0px;
+            margin-left: 10vw;
+            margin-top: 0;
+            margin-bottom: 0;
             display: inline;
         }
         .verse-head {
             font-style: italic;
-            margin-left: 5%;
+            margin-left: 5vw;
+        }
+        #song-parent {
+            height: 100vh;
+            overflow: auto;
+            width: 75vw;
+            float: left;
         }
         #song {
             font-family: "Anonymous Pro", monospace;
-            float: left;
-            width: 80%;
         }
         #sidebar {
-            width: 20%;
+            width: 20vw;
             float: right;
         }
 
-        pre {
-            margin: 0px;
+        body {
+            margin: 4px;
+            overflow: hidden;
         }
 
         /* Do this to avoid cutting verses off across pages. */
@@ -44,10 +49,10 @@
 </head>
 <body>
 
-<h1 style="text-align: center;">Hillsong - Christ Is Enough</h1>
-
-<div id="song" style="display: none;">
-    <p>Capo 4, yo</p>
+<div id="song-parent">
+    <div id="song" style="display: none;">
+        <h1 style="text-align: center;">Hillsong - Christ Is Enough</h1>
+        <p>Capo 4, yo</p>
 
 <br /><span class="verse-head">Verse 1:</span><br />
 <div class="verse"><pre class="chords">  Em            C                    G   D/F#<br /></pre>
@@ -61,11 +66,12 @@
 <pre class="lyrics">Through every trial, my soul will sing<br /></pre>
 <pre class="chords">   D/F#     C          Em        D<br /></pre>
 <pre class="lyrics">No turning back, I've been set free<br /></pre>
-<pre class="chords">Chorus:<br /></pre>
-<pre class="lyrics">   G                       Em                 D  C<br /></pre>
-<pre class="chords">Christ is enough for me, Christ is enough for me<br /></pre>
-<pre class="lyrics">              D      Em    C               D<br /></pre>
-<pre class="chords">Everything I need is in You, everything I need<br /></pre></div>
+<pre class="chords"><br /></pre>
+<pre class="lyrics">Chorus:<br /></pre>
+<pre class="chords">   G                       Em                 D  C<br /></pre>
+<pre class="lyrics">Christ is enough for me, Christ is enough for me<br /></pre>
+<pre class="chords">              D      Em    C               D<br /></pre>
+<pre class="lyrics">Everything I need is in You, everything I need<br /></pre></div>
 
 
 <br /><span class="verse-head">Verse 2:</span><br />
@@ -101,6 +107,7 @@
 <pre class="lyrics">I have decided to follow Jesus, no turning back, no turning back<br /></pre>
 <pre class="chords">          G                                C         D       G<br /></pre>
 <pre class="lyrics">I have decided to follow Jesus, no turning back, no turning back<br /></pre></div>
+    </div>
 </div>
 
 <div id="sidebar">

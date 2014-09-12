@@ -8,27 +8,32 @@
             font-weight: bold;
         }
         .chords, .lyrics {
-            margin-left: 10%;
-            margin-top: 0px;
-            margin-bottom: 0px;
+            margin-left: 10vw;
+            margin-top: 0;
+            margin-bottom: 0;
             display: inline;
         }
         .verse-head {
             font-style: italic;
-            margin-left: 5%;
+            margin-left: 5vw;
+        }
+        #song-parent {
+            height: 100vh;
+            overflow: auto;
+            width: 75vw;
+            float: left;
         }
         #song {
             font-family: "Anonymous Pro", monospace;
-            float: left;
-            width: 80%;
         }
         #sidebar {
-            width: 20%;
+            width: 20vw;
             float: right;
         }
 
-        pre {
-            margin: 0px;
+        body {
+            margin: 4px;
+            overflow: hidden;
         }
 
         /* Do this to avoid cutting verses off across pages. */
@@ -44,14 +49,15 @@
 </head>
 <body>
 
-<h1 style="text-align: center;">Hillsong - Your Loves Goes On</h1>
-
-<div id="song" style="display: none;">
-    
+<div id="song-parent">
+    <div id="song" style="display: none;">
+        <h1 style="text-align: center;">Hillsong - Your Loves Goes On</h1>
+        
 
 <br /><span class="verse-head">Intro:</span><br />
 <div class="verse"><pre class="chords">A C#m E<br /></pre>
-<pre class="lyrics">A C#m E<br /></pre></div>
+<pre class="lyrics"><br /></pre>
+<pre class="chords">A C#m E<br /></pre></div>
 
 
 <br /><span class="verse-head">Verse 1:</span><br />
@@ -93,6 +99,7 @@
 <pre class="lyrics"> One thing we know is sure<br /></pre>
 <pre class="chords">     B<br /></pre>
 <pre class="lyrics">Your love goes on and on and on<br /></pre></div>
+
 <p>Interlude 1 (same as Intro)</p>
 
 <br /><span class="verse-head">Verse 2:</span><br />
@@ -108,6 +115,7 @@
 <pre class="lyrics">In the joy, in the trial<br /></pre>
 <pre class="chords">A                C#m          E<br /></pre>
 <pre class="lyrics"> You are the Beginning and the End<br /></pre></div>
+
 <p>Pre-Chorus
 Chorus</p>
 
@@ -125,6 +133,7 @@ Chorus</p>
 
 
 <br /><span class="verse-head">Outro (same as Intro)</span><br />
+    </div>
 </div>
 
 <div id="sidebar">

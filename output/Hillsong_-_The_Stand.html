@@ -8,27 +8,32 @@
             font-weight: bold;
         }
         .chords, .lyrics {
-            margin-left: 10%;
-            margin-top: 0px;
-            margin-bottom: 0px;
+            margin-left: 10vw;
+            margin-top: 0;
+            margin-bottom: 0;
             display: inline;
         }
         .verse-head {
             font-style: italic;
-            margin-left: 5%;
+            margin-left: 5vw;
+        }
+        #song-parent {
+            height: 100vh;
+            overflow: auto;
+            width: 75vw;
+            float: left;
         }
         #song {
             font-family: "Anonymous Pro", monospace;
-            float: left;
-            width: 80%;
         }
         #sidebar {
-            width: 20%;
+            width: 20vw;
             float: right;
         }
 
-        pre {
-            margin: 0px;
+        body {
+            margin: 4px;
+            overflow: hidden;
         }
 
         /* Do this to avoid cutting verses off across pages. */
@@ -44,10 +49,10 @@
 </head>
 <body>
 
-<h1 style="text-align: center;">Hillsong - The Stand</h1>
-
-<div id="song" style="display: none;">
-    <p>Key A</p>
+<div id="song-parent">
+    <div id="song" style="display: none;">
+        <h1 style="text-align: center;">Hillsong - The Stand</h1>
+        <p>Key A</p>
 
 <br /><span class="verse-head">Intro:</span><br />
 <div class="verse"><pre class="chords">A<br /></pre></div>
@@ -95,6 +100,7 @@
 <pre class="lyrics">This life to declare Your promise<br /></pre>
 <pre class="chords">            D<br /></pre>
 <pre class="lyrics">My soul now to stand<br /></pre></div>
+
 <p>Pre-chorus x2</p>
 
 <br /><span class="verse-head">Chorus (x4):</span><br />
@@ -113,6 +119,7 @@
 
 
 <br /><span class="verse-head">Pre-chorus (softly)</span><br />
+    </div>
 </div>
 
 <div id="sidebar">

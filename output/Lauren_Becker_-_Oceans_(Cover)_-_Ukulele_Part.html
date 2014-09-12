@@ -8,27 +8,32 @@
             font-weight: bold;
         }
         .chords, .lyrics {
-            margin-left: 10%;
-            margin-top: 0px;
-            margin-bottom: 0px;
+            margin-left: 10vw;
+            margin-top: 0;
+            margin-bottom: 0;
             display: inline;
         }
         .verse-head {
             font-style: italic;
-            margin-left: 5%;
+            margin-left: 5vw;
+        }
+        #song-parent {
+            height: 100vh;
+            overflow: auto;
+            width: 75vw;
+            float: left;
         }
         #song {
             font-family: "Anonymous Pro", monospace;
-            float: left;
-            width: 80%;
         }
         #sidebar {
-            width: 20%;
+            width: 20vw;
             float: right;
         }
 
-        pre {
-            margin: 0px;
+        body {
+            margin: 4px;
+            overflow: hidden;
         }
 
         /* Do this to avoid cutting verses off across pages. */
@@ -44,12 +49,14 @@
 </head>
 <body>
 
-<h1 style="text-align: center;">Lauren Becker - Oceans (Cover) - Ukulele Part</h1>
+<div id="song-parent">
+    <div id="song" style="display: none;">
+        <h1 style="text-align: center;">Lauren Becker - Oceans (Cover) - Ukulele Part</h1>
+        
+<p>This is the ukulele part for this song. It's based off of this <a href="http://tabs.ultimate-guitar.com/h/hillsong_united/oceans_where_feet_may_fail_crd.htm">tab</a>
+and this <a href="https://www.youtube.com/watch?v=NPhR1McTn-4&amp;feature=youtu.be">Youtube video</a>.</p>
 
-<div id="song" style="display: none;">
-    <p>This is the ukulele part for this song. It's based off of this <a href="http://tabs.ultimate-guitar.com/h/hillsong_united/oceans_where_feet_may_fail_crd.htm">tab</a>
-and this <a href="https://www.youtube.com/watch?v=NPhR1McTn-4&amp;feature=youtu.be">Youtube video</a>.
-Do single strums for each chord until the start of <em>Verse 2</em>.</p>
+<p>Do single strums for each chord until the start of <em>Verse 2</em>.</p>
 
 <br /><span class="verse-head">Intro:</span><br />
 <div class="verse"><pre class="chords">Bm D A G<br /></pre>
@@ -75,8 +82,10 @@ Do single strums for each chord until the start of <em>Verse 2</em>.</p>
 <pre class="lyrics">Your grace abounds in deepest waters   Your sovereign hand   Will be my guide<br /></pre>
 <pre class="chords">Bm                      A/C#      D                       A                       G<br /></pre>
 <pre class="lyrics">Where feet may fail and fear surrounds me   You've never failed and you won't start now<br /></pre></div>
-<p>Play <em>Chorus</em>
-Play <em>Intro</em></p>
+
+<p>Play <em>Chorus</em></p>
+
+<p>Play <em>Intro</em></p>
 
 <br /><span class="verse-head">Bridge part 1 (x3) (softly and build up..):</span><br />
 <div class="verse"><pre class="chords">Bm                           G<br /></pre>
@@ -98,8 +107,10 @@ Play <em>Intro</em></p>
 <pre class="lyrics">   Take me deeper than my feet could ever wander<br /></pre>
 <pre class="chords">            A                                   Em<br /></pre>
 <pre class="lyrics">   And my faith will be made stronger   In the presence of my Saviour<br /></pre></div>
-<p>Play <em>Bridge part 1</em> x 2
-Play <em>Intro</em></p>
+
+<p>Play <em>Bridge part 1</em> x 2</p>
+
+<p>Play <em>Intro</em></p>
 
 <br /><span class="verse-head">Ending Chorus:</span><br />
 <div class="verse"><pre class="chords">G         D              A<br /></pre>
@@ -110,6 +121,7 @@ Play <em>Intro</em></p>
 <pre class="lyrics">  My soul will rest in Your embrace<br /></pre>
 <pre class="chords">         G       (A)      Bm  (A/C#)  D  A  G  Bm  (A/C#)  D  (Stay on D)<br /></pre>
 <pre class="lyrics">  I am Yours and You are mine<br /></pre></div>
+    </div>
 </div>
 
 <div id="sidebar">

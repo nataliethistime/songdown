@@ -25,7 +25,6 @@ class Songdown
 
             # Skip empty sections and lines
             return unless lines.size > 0
-            lines.reject! { |line| line == '' }
 
             verse_type = ''
             verse_start_i = -1
