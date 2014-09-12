@@ -1,0 +1,41 @@
+.chords {
+    font-weight: bold;
+}
+.chords, .lyrics {
+    margin-left: 10vw;
+    margin-top: 0;
+    margin-bottom: 0;
+    display: inline;
+}
+.verse-head {
+    font-style: italic;
+    margin-left: 5vw;
+}
+#song-parent {
+    height: 100vh;
+    overflow: auto;
+    width: 75vw;
+    float: left;
+}
+#song {
+    font-family: "Anonymous Pro", monospace;
+}
+#sidebar {
+    width: 20vw;
+    float: right;
+}
+
+body {
+    margin: 4px;
+    overflow: hidden;
+}
+
+/* Do this to avoid cutting verses off across pages. */
+@media print {
+    .verse {
+        page-break-inside: avoid;
+    }
+    #sidebar {
+        display: none;
+    }
+}

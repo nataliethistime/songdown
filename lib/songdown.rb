@@ -48,5 +48,9 @@ class Songdown
 
         index_html = Songdown::Templates::Index.render songs_written: songs_written
         File.write File.join(@output_dir, '..', 'index.html'), index_html
+
+        # Lastly, copy the static folder which has all our JS and CSS in it.
+        location = File.join File.dirname(File.expand_path(__FILE__)), 'songdown', 'static'
+        FileUtils.cp_r location, @output_dir
     end
 end
