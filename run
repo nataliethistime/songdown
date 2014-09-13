@@ -1,14 +1,17 @@
-#!/usr/local/bin/ruby
+#!/usr/bin/node
 
-$LOAD_PATH.unshift File.join(Dir.getwd, 'lib')
+'use strict';
 
-require 'songdown'
+// Initialize CoffeeScript
+require('coffee-script').register();
 
-cwd = Dir.getwd
-songdown = Songdown.new(
-    :input     => File.join(cwd, 'songs'),
-    :output    => File.join(cwd, 'output'),
-    :templates => File.join(cwd, 'lib'),
-)
+var Songdown = require('./lib/songdown');
 
-songdown.run
+var join = require('path').join;
+
+var job = new Songdown({
+    input_dir: join(__dirname, 'songs'),
+    output_dir: join(__dirname, 'output')
+});
+
+job.run();

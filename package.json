@@ -1,0 +1,22 @@
+{
+  "name": "songdown",
+  "version": "0.0.1",
+  "description": "Markdown and guitar tabs living in harmony",
+  "main": "index.js",
+  "private": true,
+  "author": "Nathan McCallum",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Vasari/songdown/issues"
+  },
+  "homepage": "https://github.com/Vasari/songdown",
+  "dependencies": {
+    "coffee-script": "1.8.0",
+    "glob": "4.0.5",
+    "lodash": "2.4.1",
+    "marked": "0.3.2",
+    "mustache": "0.8.2",
+    "normalize-newline": "1.0.1",
+    "wrench": "^1.5.8"
+  }
+}
