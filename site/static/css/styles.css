@@ -2,23 +2,21 @@
     font-weight: bold;
 }
 .chords, .lyrics {
-    margin-left: 10vw;
-    margin-top: 0;
-    margin-bottom: 0;
+    margin-left: 10%;
     display: inline;
 
 }
 .verse-head {
     font-style: italic;
-    margin-left: 5vw;
+    margin-left: 5%;
 }
 #song {
     font-family: "Anonymous Pro", monospace;
-    width: 75vw;
+    width: 75%;
     float: left;
 }
 #sidebar {
-    width: 20vw;
+    width: 20%;
     float: right;
 }
 
@@ -31,5 +29,10 @@
     /* Hide sidebar */
     #sidebar {
         display: none;
+    }
+
+    /* max width */
+    #song {
+        width: 100%;
     }
 }

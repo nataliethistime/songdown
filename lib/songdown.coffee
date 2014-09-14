@@ -10,6 +10,7 @@ normalizeNewline = require 'normalize-newline'
 t = require './songdown/templates'
 Song = require './songdown/song'
 
+module.exports =
 class Songdown
 
     constructor: (args = {}) ->
@@ -49,5 +50,3 @@ class Songdown
             @outputSong fname, html
 
         @renderIndex()
-
-module.exports = Songdown
