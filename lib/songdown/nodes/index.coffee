@@ -24,7 +24,7 @@ class VerseHeader extends Node
         @section = @section.replace Tokens.VERSE_CHORDS_HEADER, Tokens.VERSE_START
         @section = @section.replace Tokens.VERSE_LYRICS_HEADER, Tokens.VERSE_START
 
-        '<br /><span class="verse-head">' + @section + '</span><br />'
+        '<span class="verse-head">' + @section + '</span>'
 
 
 # This verse has chords and lyrics.
