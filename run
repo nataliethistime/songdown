@@ -11,7 +11,7 @@ var join = require('path').join;
 
 var job = new Songdown({
     input_dir: join(__dirname, 'songs'),
-    output_dir: join(__dirname, 'output')
+    output_dir: join(__dirname, 'site')
 });
 
 job.run();

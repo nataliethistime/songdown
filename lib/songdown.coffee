@@ -6,7 +6,6 @@ glob = require 'glob'
 path = require 'path'
 fs = require 'fs'
 normalizeNewline = require 'normalize-newline'
-wrench = require 'wrench'
 
 t = require './songdown/templates'
 Song = require './songdown/song'
@@ -43,11 +42,6 @@ class Songdown
     outputIndex: (html) ->
         fs.writeFileSync path.join(@output_dir, '..', 'index.html'), html
 
-    handleAssets: ->
-        in_ = path.join __dirname, 'songdown', 'static'
-        out = path.join @output_dir, 'static'
-        wrench.copyDirSyncRecursive in_, out, forceDelete: yes
-
     run: ->
         _.each @getFiles(), (name) =>
             [title, fname] = @handleNames name
@@ -55,6 +49,5 @@ class Songdown
             @outputSong fname, html
 
         @renderIndex()
-        @handleAssets()
 
 module.exports = Songdown

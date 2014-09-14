@@ -16,7 +16,6 @@
     "lodash": "2.4.1",
     "marked": "0.3.2",
     "mustache": "0.8.2",
-    "normalize-newline": "1.0.1",
-    "wrench": "^1.5.8"
+    "normalize-newline": "1.0.1"
   }
 }
