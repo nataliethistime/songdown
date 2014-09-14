@@ -10,10 +10,11 @@ class Node
     constructor: (@section = 'ERROR!!!!') ->
     toHtml: -> throw new Error 'override me please!!!'
 
+
 # Some simple methods
-chords_line = (line) -> '<pre class="chords">' + line + '<br /></pre>'
-lyrics_line = (line) -> '<pre class="lyrics">' + line + '<br /></pre>'
-verse_block = (lines) -> '<div class="verse">' + lines.join("\n") + '</div>'
+chordsLine = (line) -> '<pre class="chords">' + line + '<br /></pre>'
+lyricsLine = (line) -> '<pre class="lyrics">' + line + '<br /></pre>'
+verseBlock = (lines) -> '<div class="verse">' + lines.join("\n") + '</div>'
 
 
 class VerseHeader extends Node
@@ -33,23 +34,23 @@ class VerseCommon extends Node
 
             # Chords are on even numbered lines
             if i % 2 == 0
-                chords_line line
+                chordsLine line
             else
-                lyrics_line line
+                lyricsLine line
 
-        verse_block lines
+        verseBlock lines
 
 
 class VerseChords extends Node
     toHtml: ->
-        lines = _.map @section, chords_line
-        verse_block lines
+        lines = _.map @section, chordsLine
+        verseBlock lines
 
 
 class VerseLyrics extends Node
     toHtml: ->
-        lines = _.map @section, lyrics_line
-        verse_block lines
+        lines = _.map @section, lyricsLine
+        verseBlock lines
 
 
 class Markdown extends Node

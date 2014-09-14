@@ -20,26 +20,26 @@ class Song
 
         lines = section.split Tokens.NEWLINE
 
-        verse_type = null
-        verse_start_i = -1
+        verseType = null
+        verseStartIndex = -1
 
         _.each lines, (line, i) ->
             if line.match Tokens.VERSE_COMMON_HEADER
-                verse_type = 'COMMON'
+                verseType = 'COMMON'
             else if line.match Tokens.VERSE_CHORDS_HEADER
-                verse_type = 'CHORDS'
+                verseType = 'CHORDS'
             else if line.match Tokens.VERSE_LYRICS_HEADER
-                verse_type = 'LYRICS'
+                verseType = 'LYRICS'
 
-            if verse_type?
-                verse_start_i = i
+            if verseType?
+                verseStartIndex = i
                 return no
 
-        markdown = lines.slice(0, verse_start_i).join "\n"
+        markdown = lines.slice(0, verseStartIndex).join "\n"
         @nodes.push new Nodes.Markdown markdown
 
-        header = lines[verse_start_i]
-        verse = lines.slice verse_start_i + 1, lines.length
+        header = lines[verseStartIndex]
+        verse = lines.slice verseStartIndex + 1, lines.length
 
         # If there isn't a header, there's pro'lly a loose \n hanging around
         # somewhere causing trouble.
@@ -48,7 +48,7 @@ class Song
 
         @nodes.push new Nodes.VerseHeader header
 
-        switch verse_type
+        switch verseType
             when 'COMMON'
                 @nodes.push new Nodes.VerseCommon verse
             when 'CHORDS'
@@ -57,5 +57,5 @@ class Song
                 @nodes.push new Nodes.VerseLyrics verse
 
     toHtml: ->
-        thing = _.map @nodes, (node) -> node.toHtml()
+        _.map @nodes, (node) -> node.toHtml()
             .join "\n"

@@ -10,8 +10,8 @@ var Songdown = require('./lib/songdown');
 var join = require('path').join;
 
 var job = new Songdown({
-    input_dir: join(__dirname, 'songs'),
-    output_dir: join(__dirname, 'site')
+    inputDir: join(__dirname, 'songs'),
+    outputDir: join(__dirname, 'site')
 });
 
 job.run();
