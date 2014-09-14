@@ -18,7 +18,7 @@ function initEvents() {
     });
 
     $('#viewSelector').off().on('change', function() {
-        changeViewMode($(this).val());
+        changeViewMode(parseInt($(this).val(), 10));
     })
 
     // Note: a CSS media query handles the hiding of the sidebar and making
@@ -38,8 +38,7 @@ function setFontSize(size) {
     $('#song').css('font-size', size + 'px');
 }
 
-function changeViewMode(mode) {
-    var num = parseInt(mode, 10);
+function changeViewMode(num) {
 
     // Show Chords and Lyrics
     if (num === 0) {

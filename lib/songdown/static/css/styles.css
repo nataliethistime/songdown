@@ -12,30 +12,23 @@
     font-style: italic;
     margin-left: 5vw;
 }
-#song-parent {
-    height: 100vh;
-    overflow: auto;
-    width: 75vw;
-    float: left;
-}
 #song {
     font-family: "Anonymous Pro", monospace;
+    width: 75vw;
+    float: left;
 }
 #sidebar {
     width: 20vw;
     float: right;
 }
 
-body {
-    margin: 4px;
-    overflow: hidden;
-}
-
-/* Do this to avoid cutting verses off across pages. */
 @media print {
+    /* Do this to avoid cutting verses off across pages. */
     .verse {
         page-break-inside: avoid;
     }
+
+    /* Hide sidebar */
     #sidebar {
         display: none;
     }
