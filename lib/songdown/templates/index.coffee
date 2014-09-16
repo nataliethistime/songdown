@@ -7,5 +7,5 @@ read = (name) ->
     fs.readFileSync(join(__dirname, name)).toString()
 
 module.exports =
-    Song  : read 'song.html'
-    Index : read 'index.html'
+    song  : read 'song.html'
+    index : read 'index.html'

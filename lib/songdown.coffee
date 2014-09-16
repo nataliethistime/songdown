@@ -8,7 +8,7 @@ path = require 'path'
 fs = require 'fs'
 normalizeNewline = require 'normalize-newline'
 
-t = require './songdown/templates'
+templates = require './songdown/templates'
 Song = require './songdown/song'
 
 module.exports =
@@ -31,7 +31,7 @@ class Songdown
     renderSong: (name, title) ->
         text = normalizeNewline fs.readFileSync(path.join(@inputDir, name)).toString()
         song = new Song text
-        Mustache.render t.Song, {song_html: song.toHtml(), title}
+        Mustache.render templates.song, {song_html: song.toHtml(), title}
 
     outputSong: (fname, html) ->
         opath = path.join @outputDir, fname
@@ -39,10 +39,10 @@ class Songdown
 
     renderIndex: ->
         return unless @songsWritten.length > 0
-        @outputIndex Mustache.render t.Index, songsWritten: @songsWritten
+        @outputIndex Mustache.render templates.index, songsWritten: @songsWritten
 
     outputIndex: (html) ->
-        fs.writeFileSync path.join(@outputDir, '..', 'index.html'), html
+        fs.writeFileSync path.join(@outputDir, 'index.html'), html
 
     run: ->
         _.each @getFiles(), (name) =>
