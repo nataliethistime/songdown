@@ -2,24 +2,27 @@
 <head>
     <title>Songdown Collection</title>
 
-    <!-- stuff -->
-
-    <style type="text/css">
-        body {
-            font-family: "Segoe UI"
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="static/css/colors.min.css"></link>
+    <link rel="stylesheet" type="text/css" href="static/css/styles.css"></link>
 
 </head>
 
 <body>
-    <h1>Songdown Collection</h1>
+    <!-- A nice pretty header thing. -->
+    <div class="bg-yellow center-text" id="index-header">
+        <hr /><h1 class="center-text">~ Songdown Collection ~</h1><hr />
+    </div>
 
-    <ul>
-        {{#songsWritten}}
-            <li><a href="{{fname}}">{{title}}</a></li>
-        {{/songsWritten}}
-    </ul>
+    <!-- The rest of the page belongs here. -->
+    <div class="bg-green" id="song-list">
+        <br /><br />
+
+        <ul>
+            {{#songsWritten}}
+                <li><a href="{{fname}}">{{title}}</a></li>
+            {{/songsWritten}}
+        </ul>
+    </div>
 </body>
 
 
