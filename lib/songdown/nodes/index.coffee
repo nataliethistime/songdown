@@ -7,14 +7,14 @@ Tokens = require './../tokens'
 
 # Base class for everything going on in here...
 class Node
-    constructor: (@section = 'ERROR!!!!') ->
+    constructor: (@section = 'ERROR!!!') ->
     toHtml: -> throw new Error 'override me please!!!'
 
 
 # Some simple methods
 chordsLine = (line) -> '<pre class="chords">' + line + '<br /></pre>'
 lyricsLine = (line) -> '<pre class="lyrics">' + line + '<br /></pre>'
-verseBlock = (lines) -> '<div class="verse">' + lines.join("\n") + '</div>'
+verseBlock = (lines) -> '<span class="verse">' + lines.join("\n") + '</span><br />'
 
 
 class VerseHeader extends Node
@@ -24,7 +24,7 @@ class VerseHeader extends Node
         @section = @section.replace Tokens.VERSE_CHORDS_HEADER, Tokens.VERSE_START
         @section = @section.replace Tokens.VERSE_LYRICS_HEADER, Tokens.VERSE_START
 
-        '<span class="verse-head">' + @section + '</span>'
+        '<span class="verse-head">' + @section + '</span><br />'
 
 
 # This verse has chords and lyrics.

@@ -18,7 +18,10 @@ class Song
     # sometimes a markdown node we need to find in each section.
     parseSection: (section) =>
 
-        lines = section.split Tokens.NEWLINE
+        lines = _.filter section.split(Tokens.NEWLINE), (line) ->
+            line isnt '\n' and line isnt ''
+
+        return unless _.size(lines) > 0
 
         verseType = null
         verseStartIndex = -1
@@ -35,16 +38,10 @@ class Song
                 verseStartIndex = i
                 return no
 
-        markdown = lines.slice(0, verseStartIndex).join "\n"
-        @nodes.push new Nodes.Markdown markdown
+        @parseMarkdown lines.slice(0, verseStartIndex).join "\n"
 
         header = lines[verseStartIndex]
         verse = lines.slice verseStartIndex + 1, lines.length
-
-        # If there isn't a header, there's pro'lly a loose \n hanging around
-        # somewhere causing trouble.
-        # TODO: figure out the bug that causes this!
-        return unless header?
 
         @nodes.push new Nodes.VerseHeader header
 
@@ -55,6 +52,9 @@ class Song
                 @nodes.push new Nodes.VerseChords verse
             when 'LYRICS'
                 @nodes.push new Nodes.VerseLyrics verse
+
+    parseMarkdown: (lines) ->
+        @nodes.push new Nodes.Markdown lines
 
     toHtml: ->
         _.map @nodes, (node) -> node.toHtml()
