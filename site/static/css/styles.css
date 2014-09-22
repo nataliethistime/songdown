@@ -36,6 +36,10 @@ hr {
     text-decoration: underline;
     margin-left: 5%;
 }
+.verse-goto {
+    font-style: italic;
+    text-decoration: underline;
+}
 #song {
     font-family: monospace;
     width: 75%;

@@ -7,3 +7,4 @@ module.exports =
     VERSE_CHORDS_HEADER : /\+$/
     VERSE_LYRICS_HEADER : /\-$/
     NEWLINE             : "\n"
+    GOTO_START          : /^\-\>\s+/

@@ -14,7 +14,7 @@ class Node
 # Some simple methods
 chordsLine = (line) -> '<pre class="chords">' + line + '<br /></pre>'
 lyricsLine = (line) -> '<pre class="lyrics">' + line + '<br /></pre>'
-verseBlock = (lines) -> '<span class="verse">' + lines.join("\n") + '</span><br />'
+verseBlock = (lines) -> '<span class="verse">' + lines.join("\n") + '</span>'
 
 
 class VerseHeader extends Node
@@ -24,7 +24,7 @@ class VerseHeader extends Node
         @section = @section.replace Tokens.VERSE_CHORDS_HEADER, Tokens.VERSE_START
         @section = @section.replace Tokens.VERSE_LYRICS_HEADER, Tokens.VERSE_START
 
-        '<span class="verse-head">' + @section + '</span><br />'
+        '<div class="verse-head">' + @section + '</div>'
 
 
 # This verse has chords and lyrics.
@@ -57,5 +57,9 @@ class Markdown extends Node
     toHtml: ->
         marked @section
 
+class GotoVerse extends Node
+    toHtml: ->
+        '<div>Play <span class="verse-goto">' + @section + '</span></div>'
 
-module.exports = {VerseHeader, VerseCommon, VerseChords, VerseLyrics, Markdown}
+
+module.exports = {VerseHeader, VerseCommon, VerseChords, VerseLyrics, Markdown, GotoVerse}
