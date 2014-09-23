@@ -41,7 +41,7 @@ class Song
         # Avoid null issues...
         return unless verseClass?
 
-        @parseMarkdown lines.slice(0, verseStartIndex).join "\n"
+        @parseMarkdown lines.slice 0, verseStartIndex
 
         header = lines[verseStartIndex]
         verse = lines.slice verseStartIndex + 1, lines.length
@@ -50,7 +50,21 @@ class Song
         @nodes.push new verseClass verse
 
     parseMarkdown: (lines) ->
-        @nodes.push new Nodes.Markdown lines
+        return unless lines.length > 0
+
+        storage = []
+        _.each lines, (line) =>
+            if line.match Tokens.GOTO
+                @nodes.push new Nodes.Comment storage.join "\n"
+                storage = []
+
+                # Remove the GOTO token before adding to the nodes list.
+                line = line.replace Tokens.GOTO, ''
+                @nodes.push new Nodes.GotoVerse line
+            else
+                storage.push line
+
+        @nodes.push new Nodes.Comment storage.join "\n"
 
     toHtml: ->
         _.map @nodes, (node) -> node.toHtml()

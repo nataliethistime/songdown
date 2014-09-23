@@ -53,13 +53,13 @@ class VerseLyrics extends Node
         verseBlock lines
 
 
-class Markdown extends Node
+class Comment extends Node
     toHtml: ->
         marked @section
 
 class GotoVerse extends Node
     toHtml: ->
-        '<div>Play <span class="verse-goto">' + @section + '</span></div>'
+        '<p>Play <span class="verse-goto">' + @section + '</span></p>'
 
 
-module.exports = {VerseHeader, VerseCommon, VerseChords, VerseLyrics, Markdown, GotoVerse}
+module.exports = {VerseHeader, VerseCommon, VerseChords, VerseLyrics, Comment, GotoVerse}
