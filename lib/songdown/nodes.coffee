@@ -1,7 +1,6 @@
 'use strict'
 
 marked = require 'marked'
-
 _ = require 'lodash'
 
 Tokens = require './tokens'
@@ -58,6 +57,7 @@ class Comments extends Node
     toHtml: ->
         @section = @section.join '<br />'
         marked @section
+
 
 class GotoVerse extends Node
     toHtml: ->
