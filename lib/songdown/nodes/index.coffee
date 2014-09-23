@@ -59,6 +59,7 @@ class Comment extends Node
 
 class GotoVerse extends Node
     toHtml: ->
+        @section = @section.replace Tokens.GOTO, ''
         '<p>Play <span class="verse-goto">' + @section + '</span></p>'
 
 

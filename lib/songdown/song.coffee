@@ -57,9 +57,6 @@ class Song
             if line.match Tokens.GOTO
                 @nodes.push new Nodes.Comment storage.join "\n"
                 storage = []
-
-                # Remove the GOTO token before adding to the nodes list.
-                line = line.replace Tokens.GOTO, ''
                 @nodes.push new Nodes.GotoVerse line
             else
                 storage.push line
