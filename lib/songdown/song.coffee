@@ -23,20 +23,23 @@ class Song
 
         return unless _.size(lines) > 0
 
-        verseType = null
+        verseClass = null
         verseStartIndex = -1
 
         _.each lines, (line, i) ->
             if line.match Tokens.VERSE_COMMON_HEADER
-                verseType = 'COMMON'
+                verseClass = Nodes.VerseCommon
             else if line.match Tokens.VERSE_CHORDS_HEADER
-                verseType = 'CHORDS'
+                verseClass = Nodes.VerseChords
             else if line.match Tokens.VERSE_LYRICS_HEADER
-                verseType = 'LYRICS'
+                verseClass = Nodes.VerseLyrics
 
-            if verseType?
+            if verseClass?
                 verseStartIndex = i
                 return no
+
+        # Avoid null issues...
+        return unless verseClass?
 
         @parseMarkdown lines.slice(0, verseStartIndex).join "\n"
 
@@ -44,14 +47,7 @@ class Song
         verse = lines.slice verseStartIndex + 1, lines.length
 
         @nodes.push new Nodes.VerseHeader header
-
-        switch verseType
-            when 'COMMON'
-                @nodes.push new Nodes.VerseCommon verse
-            when 'CHORDS'
-                @nodes.push new Nodes.VerseChords verse
-            when 'LYRICS'
-                @nodes.push new Nodes.VerseLyrics verse
+        @nodes.push new verseClass verse
 
     parseMarkdown: (lines) ->
         @nodes.push new Nodes.Markdown lines
