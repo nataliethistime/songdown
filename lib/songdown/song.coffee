@@ -55,13 +55,13 @@ class Song
         storage = []
         _.each lines, (line) =>
             if line.match Tokens.GOTO
-                @nodes.push new Nodes.Comment storage.join "\n"
+                @nodes.push new Nodes.Comments storage
                 storage = []
                 @nodes.push new Nodes.GotoVerse line
             else
                 storage.push line
 
-        @nodes.push new Nodes.Comment storage.join "\n"
+        @nodes.push new Nodes.Comments(storage) if storage.length > 0
 
     toHtml: ->
         _.map @nodes, (node) -> node.toHtml()

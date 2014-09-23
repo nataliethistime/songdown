@@ -1,6 +1,7 @@
 'use strict'
 
 marked = require 'marked'
+
 _ = require 'lodash'
 
 Tokens = require './../tokens'
@@ -53,8 +54,9 @@ class VerseLyrics extends Node
         verseBlock lines
 
 
-class Comment extends Node
+class Comments extends Node
     toHtml: ->
+        @section = @section.join '<br />'
         marked @section
 
 class GotoVerse extends Node
@@ -63,4 +65,4 @@ class GotoVerse extends Node
         '<p>Play <span class="verse-goto">' + @section + '</span></p>'
 
 
-module.exports = {VerseHeader, VerseCommon, VerseChords, VerseLyrics, Comment, GotoVerse}
+module.exports = {VerseHeader, VerseCommon, VerseChords, VerseLyrics, Comments, GotoVerse}
