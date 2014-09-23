@@ -4,7 +4,7 @@ marked = require 'marked'
 
 _ = require 'lodash'
 
-Tokens = require './../tokens'
+Tokens = require './tokens'
 
 # Base class for everything going on in here...
 class Node
