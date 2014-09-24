@@ -61,8 +61,31 @@ class Comments extends Node
 
 class GotoVerse extends Node
     toHtml: ->
-        @section = @section.replace Tokens.GOTO, ''
-        '<p>Play <span class="verse-goto">' + @section + '</span></p>'
+        line = @section.replace Tokens.GOTO, ''
+
+        # Let's take this slow...
+        dynamicsMatch = _.first(/\(\S+\)/i.exec(line)) or null
+        repeatMatch   = _.first(/x\s?\d+/i.exec(line)) or null
+
+        # Attempt to get the title of the verse, that this goto is referring to, by itself.
+        titleStr = line.replace(dynamicsMatch or '', '').replace(repeatMatch or '', '').trim()
+
+        # Now that we've extracted the important information from the original line,
+        # let's get some HTML on the grill! :D
+
+        title = '<span class="goto title">' + titleStr + '</span>'
+        dynamics = if dynamicsMatch?
+            '<span class="goto dynamics">' + dynamicsMatch + '</span>'
+        else ''
+        repeat = if repeatMatch?
+            '<span class="goto repeat">' + repeatMatch + '</span>'
+        else ''
+
+        # The final thing that we've made.
+        html = [title, dynamics, repeat].join ' '
+
+
+        "<p>Play #{html}</p>"
 
 
 module.exports = {VerseHeader, VerseCommon, VerseChords, VerseLyrics, Comments, GotoVerse}

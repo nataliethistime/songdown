@@ -36,9 +36,15 @@ hr {
     text-decoration: underline;
     margin-left: 5%;
 }
-.verse-goto {
+.goto.title {
     font-style: italic;
     text-decoration: underline;
+}
+.goto.dynamics {
+    font-style: italic;
+}
+.goto.repeat {
+    /* Should this be styled at all??? */
 }
 #song {
     font-family: monospace;
