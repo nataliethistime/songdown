@@ -11,6 +11,7 @@ class Song
         @text = text
         @nodes = []
 
+        # Let's do this!
         _.each @text.split(Tokens.VERSE_END), @parseSection
 
     # One section is the chunk of text from the line after the last verse end
@@ -18,11 +19,15 @@ class Song
     # sometimes a markdown node we need to find in each section.
     parseSection: (section) =>
 
+        # Filter out blank lines or newlines. This allows the user to be very
+        # free with the formatting inside the .songdown file and it won't
+        # have an effect on the appearence of the html page.
         lines = _.filter section.split(Tokens.NEWLINE), (line) ->
             line isnt '\n' and line isnt ''
 
         return unless _.size(lines) > 0
 
+        #
         verseClass = null
         verseStartIndex = -1
 
@@ -40,14 +45,19 @@ class Song
 
         header = lines[verseStartIndex]
         verse = lines.slice verseStartIndex + 1, lines.length
+
         comments = if verseStartIndex is -1
-            lines.slice 0, _.size lines
+            # We're probably at the end of the file, so just grab everything.
+            _.clone lines
         else
+            # Otherwise, grab from the start of the section to the line before
+            # the very's header.
             lines.slice 0, verseStartIndex
 
         @parseComments comments
 
-        # Avoid null issues...
+        # At the end of the file there can be a comment node to parse, but no
+        # verse, if that's the case, stop here.
         return unless verseClass?
 
         @nodes.push new Nodes.VerseHeader header
