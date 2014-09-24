@@ -38,19 +38,23 @@ class Song
                 verseStartIndex = i
                 return no
 
-        # Avoid null issues...
-        return unless verseClass?
-
-        @parseMarkdown lines.slice 0, verseStartIndex
-
         header = lines[verseStartIndex]
         verse = lines.slice verseStartIndex + 1, lines.length
+        comments = if verseStartIndex is -1
+            lines.slice 0, _.size lines
+        else
+            lines.slice 0, verseStartIndex
+
+        @parseComments comments
+
+        # Avoid null issues...
+        return unless verseClass?
 
         @nodes.push new Nodes.VerseHeader header
         @nodes.push new verseClass verse
 
-    parseMarkdown: (lines) ->
-        return unless lines.length > 0
+    parseComments: (lines) ->
+        return unless _.size(lines) > 0
 
         storage = []
         _.each lines, (line) =>
@@ -61,7 +65,7 @@ class Song
             else
                 storage.push line
 
-        @nodes.push new Nodes.Comments(storage) if storage.length > 0
+        @nodes.push new Nodes.Comments(storage) if _.size(lines) > 0
 
     toHtml: ->
         _.map @nodes, (node) -> node.toHtml()
