@@ -4,9 +4,28 @@
 var FONT_SIZE = 16;
 var FADE_TIME = 300; // milli-seconds
 
+// All the themes 'n' stuff stuff.
+var THEMES = [
+    {
+        name : 'Default',
+        url  : 'static/css/theme-default.css'
+    },
+    {
+        name : 'Colourful',
+        url  : 'static/css/theme-colourful.css'
+    }
+];
+
 function init() {
     $('#fontSize').attr('value', FONT_SIZE);
     setFontSize(FONT_SIZE);
+
+    // Initialize the theme selector.
+    var $el = $('#themeSelector');
+    for (var i = 0; i < THEMES.length; i++) {
+        var theme = THEMES[i];
+        $el.append('<option value="' + theme.url + '">' + theme.name + '</option>');
+    }
 
     initEvents();
     showContent();
@@ -19,7 +38,11 @@ function initEvents() {
 
     $('#viewSelector').off().on('change', function() {
         changeViewMode(parseInt($(this).val(), 10));
-    })
+    });
+
+    $('#themeSelector').off().on('change', function() {
+        changeTheme($(this).val());
+    });
 
     // Note: a CSS media query handles the hiding of the sidebar and making
     //   sure that none of the verses are cut across pages.
@@ -30,7 +53,7 @@ function initEvents() {
 }
 
 function showContent() {
-    $('#song').css('display', '').hide().fadeIn(FADE_TIME);
+    $('#song').fadeIn(FADE_TIME);
 }
 
 function setFontSize(size) {
@@ -42,13 +65,17 @@ function changeViewMode(num) {
 
     // Show Chords and Lyrics
     if (num === 0) {
-        $('.chords, .lyrics').fadeIn(FADE_TIME);
+        $('.verse.chords, .verse.lyrics').fadeIn(FADE_TIME);
     }
     // Lyrics only.
     else if (num === 1) {
-        $('.chords').fadeOut(FADE_TIME);
-        $('.lyrics').fadeIn(FADE_TIME);
+        $('.verse.chords').fadeOut(FADE_TIME);
+        $('.verse.lyrics').fadeIn(FADE_TIME);
     }
+}
+
+function changeTheme(url) {
+    $('#themeCssElement').attr('href', url);
 }
 
 $(window.document).on('ready', init);

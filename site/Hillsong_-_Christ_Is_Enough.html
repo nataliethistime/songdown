@@ -4,7 +4,7 @@
     <title>Hillsong - Christ Is Enough</title>
 
     <link rel="stylesheet" type="text/css" href="static/css/styles.css"></link>
-    <link rel="stylesheet" type="text/css" href="static/css/theme-default.css"></link>
+    <link id="themeCssElement" rel="stylesheet" type="text/css" href="static/css/theme-default.css"></link>
 </head>
 <body>
 
@@ -58,10 +58,14 @@
     <h3>Toolbox</h3>
 
     <label for="fontSize">Font size: <input type="text" id="fontSize"></label>
+    <br />
     <label for="viewSelector">View Mode: <select id="viewSelector">
         <option value="0">Lyrics and Chords</option>
         <option value="1">Just Lyrics</option>
     </select></label>
+    <br />
+    <label for="themeSelector">Select Theme:<select id="themeSelector"></select></label>
+    <br />
     <button type="button" id="printButton">Print!</button>
 </div>
 
