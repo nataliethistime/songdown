@@ -28,10 +28,8 @@ function init() {
     }
 
     initEvents();
-
-    // Handle anchors
-    window.addAnchors('.verse.title');
-
+    initAnchors();
+    initTheme();
     showContent();
 }
 
@@ -54,6 +52,15 @@ function initEvents() {
         event.preventDefault();
         window.print();
     });
+}
+
+function initAnchors() {
+    window.addAnchors('.verse.title');
+}
+
+function initTheme() {
+    var url = localStorage.lastUsedTheme || THEMES[0].url;
+    changeTheme(url);
 }
 
 function showContent() {
@@ -79,6 +86,20 @@ function changeViewMode(num) {
 }
 
 function changeTheme(url) {
+    // Make sure the value stored in localStorage actually is a theme we can use
+    // and 'select' the theme in the dropdown box.
+    var el = $('option', '#themeSelector').filter(function() {
+        return $(this).val() === url;
+    })[0];
+
+    if (!el) {
+        return;
+    }
+
+    $(el).attr('selected', true);
+
+    // Store for next time.
+    localStorage.lastUsedTheme = url;
     $('#themeCssElement').attr('href', url);
 }
 
