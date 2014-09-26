@@ -28,6 +28,10 @@ function init() {
     }
 
     initEvents();
+
+    // Handle anchors
+    window.addAnchors('.verse.title');
+
     showContent();
 }
 
