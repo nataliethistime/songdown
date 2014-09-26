@@ -22,30 +22,6 @@ hr {
 #song-list {
     margin: 0;
 }
-
-.chords {
-    font-weight: bold;
-}
-.chords, .lyrics {
-    margin-left: 10%;
-    display: inline;
-
-}
-.verse-head {
-    font-style: italic;
-    text-decoration: underline;
-    margin-left: 5%;
-}
-.goto.title {
-    font-style: italic;
-    text-decoration: underline;
-}
-.goto.dynamics {
-    font-style: italic;
-}
-.goto.repeat {
-    /* Should this be styled at all??? */
-}
 #song {
     font-family: monospace;
     width: 75%;
@@ -71,4 +47,13 @@ hr {
     #song {
         width: 100%;
     }
+}
+
+/* Base level styles so that themes don't have repeated things */
+.chords, .lyrics {
+    margin-left: 10%;
+    display: inline;
+}
+.verse.title {
+    margin-left: 5%;
 }
