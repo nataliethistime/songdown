@@ -2,6 +2,9 @@
 <head>
     <title>Songdown Collection</title>
 
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="static/js/trianglify.js"></script>
+
     <link rel="stylesheet" type="text/css" href="static/css/colors.min.css"></link>
     <link rel="stylesheet" type="text/css" href="static/css/styles.css"></link>
 
@@ -9,14 +12,12 @@
 
 <body>
     <!-- A nice pretty header thing. -->
-    <div class="bg-yellow center-text" id="index-header">
+    <div class="center-text" id="index-header">
         <hr /><h1 class="center-text">~ Songdown Collection ~</h1><hr />
     </div>
 
     <!-- The rest of the page belongs here. -->
-    <div class="bg-green" id="song-list">
-        <br /><br />
-
+    <div id="song-list" class="box">
         <ul>
             {{#songsWritten}}
                 <li><a href="{{fname}}">{{title}}</a></li>
@@ -25,14 +26,13 @@
     </div>
 </body>
 
-<!-- Google Analytics tracking snippet. -->
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-55207616-1', 'auto');
-  ga('send', 'pageview');
+<script type="text/javascript">
+    var t = new Trianglify();
+    var pattern = t.generate(document.body.clientWidth, document.body.clientHeight, {
+        noiseIntensity: 0,
+        cellsize: 120
+    });
+    document.body.setAttribute('style', 'background-image: ' + pattern.dataUrl);
 </script>
 
 
