@@ -103,4 +103,4 @@ function changeTheme(url) {
     $('#themeCssElement').attr('href', url);
 }
 
-$(window.document).on('ready', init);
+$(document).ready(init);

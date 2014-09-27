@@ -19,6 +19,11 @@ hr {
     background-color: black;
 }
 
+/* This only works when the user's browser supports CSS3. */
+.bg-fade {
+    transition: background 0.5s linear;
+}
+
 .box {
     display: block;
     background: rgba(255, 255, 255, 0.6);
@@ -59,7 +64,7 @@ hr {
 }
 
 /* Base level styles so that themes don't have repeated things */
-.chords, .lyrics {
+.verse.chords, .verse.lyrics {
     margin-left: 10%;
     display: inline;
 }

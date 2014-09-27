@@ -11,16 +11,16 @@
     <script type="text/javascript" src="static/js/vendor/anchor.js"></script>
     <link rel="stylesheet" href="static/css/vendor/anchor.css">
 </head>
+
+
 <body>
+    <h1 class="center-text">{{title}}</h1>
+    <div id="song" style="display: none;">
+        <!-- Here be the song... -->
+        {{{song_html}}}
+    </div>
 
-<h1 style="text-align: center;">{{title}}</h1>
-<div id="song" style="display: none;">
-
-    <!-- Here be the song... -->
-    {{{song_html}}}
-</div>
-
-<div id="sidebar">
+    <div id="sidebar">
     <h3>Toolbox</h3>
 
     <label for="fontSize">Font size: <input type="text" id="fontSize"></label>

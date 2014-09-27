@@ -2,6 +2,7 @@
 <head>
     <title>Songdown Collection</title>
 
+    <script src="static/js/vendor/jquery.js"></script>
     <script src="static/js/vendor/d3.js"></script>
     <script src="static/js/vendor/trianglify.js"></script>
 
@@ -10,7 +11,7 @@
 
 </head>
 
-<body>
+<body class="bg-fade">
     <!-- A nice pretty header thing. -->
     <div class="center-text" id="index-header">
         <hr /><h1 class="center-text">~ Songdown Collection ~</h1><hr />
@@ -35,12 +36,29 @@
 </body>
 
 <script type="text/javascript">
-    var t = new Trianglify();
-    var pattern = t.generate(document.body.clientWidth, document.body.clientHeight, {
-        noiseIntensity: 0,
-        cellsize: 120
-    });
-    document.body.setAttribute('style', 'background-image: ' + pattern.dataUrl);
+    function generateBackground() {
+        var t = new Trianglify({
+            noiseIntensity: 0,
+            cellsize: 120
+        });
+
+        // We'll make the image twice the size of window. The browser will
+        // scale the image down to the right size and if the user changes the
+        // size, (hopefully), there's enough image to cover the new area.
+        //
+        // This is the least clumsy auto-resize method I've found.
+        //
+        // (just let that sink in)
+        var $win = $(window);
+        var pattern = t.generate($win.width() * 2, $win.height() * 2);
+        $('body').css('background-image', pattern.dataUrl);
+    }
+
+    function init() {
+        generateBackground();
+    }
+
+    $(document).ready(init);
 </script>
 
 
