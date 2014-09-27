@@ -46,8 +46,14 @@
         $('body').css('background-image', pattern.dataUrl);
     }
 
-    function init() {
+    // I don't know what in creation to call this.
+    function startBackgroundCoolThing() {
         generateBackground();
+        setInterval(generateBackground, 20 * 1000);
+    }
+
+    function init() {
+        startBackgroundCoolThing();
     }
 
     $(document).ready(init);
