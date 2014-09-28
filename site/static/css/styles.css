@@ -31,11 +31,13 @@ hr {
     border-radius: 3px;
     margin: 10px 5px;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+
+    /* Centering and stuff */
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-#song-list {
-    margin: 0;
-}
 #song {
     font-family: monospace;
     width: 75%;
