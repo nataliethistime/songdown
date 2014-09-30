@@ -1,6 +1,5 @@
 'use strict'
 
-Mustache = require 'mustache'
 _ = require 'lodash'
 
 glob = require 'glob'
@@ -17,7 +16,7 @@ class Songdown
     constructor: (args = {}) ->
 
         {@inputDir, @outputDir} = args
-        @songsWritten = []
+        @songsWritten = {}
 
     getFiles: ->
         glob.sync '*.songdown', cwd: @inputDir
@@ -30,7 +29,7 @@ class Songdown
     renderSong: (name, title) ->
         text = normalizeNewline fs.readFileSync(path.join(@inputDir, name)).toString()
         song = new Song text
-        Mustache.render templates.song, {song_html: song.toHtml(), title}
+        templates.song {song_html: song.toHtml(), title}
 
     outputSong: (fname, html) ->
         opath = path.join @outputDir, fname
@@ -39,14 +38,14 @@ class Songdown
     handleIndexEntry: (title, fname) ->
         splitted = title.split '-'
         artist = splitted.shift().trim()
-        name = splitted.join '-'
+        name = splitted.join('-').trim()
 
         @songsWritten[artist] ?= []
         @songsWritten[artist].push {fname, name}
 
     renderIndex: ->
         return unless _.size(Object.keys(@songsWritten)) > 0
-        @outputIndex Mustache.render templates.index, songsWritten: @songsWritten
+        @outputIndex templates.index {@songsWritten}
 
     outputIndex: (html) ->
         fs.writeFileSync path.join(@outputDir, 'index.html'), html

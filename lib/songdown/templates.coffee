@@ -1,11 +1,15 @@
 'use strict'
 
 fs = require 'fs'
-{join} = require 'path'
+path = require 'path'
+Handlebars = require 'handlebars'
 
-read = (name) ->
-    fs.readFileSync(join(__dirname, 'templates', name)).toString()
+templateFromFname = (name) ->
+    str = fs.readFileSync path.join __dirname, 'templates', name
+        .toString()
+
+    Handlebars.compile str
 
 module.exports =
-    song  : read 'song.html'
-    index : read 'index.html'
+    song  : templateFromFname 'song.hbs'
+    index : templateFromFname 'index.hbs'
