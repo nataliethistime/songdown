@@ -12,41 +12,30 @@
 
 </head>
 
-<body class="bg-fade">
+<body class="index-bg">
     <!-- A nice pretty header thing. -->
     <div class="center-text" id="index-header">
-        <hr /><h1 class="center-text">~ Songdown Collection ~</h1><hr />
+        <hr class="small thick" />
+        <h1 class="center-text">~ Songdown Collection ~</h1>
+        <hr class="small thick" />
     </div>
 
     <!-- The rest of the page belongs here. -->
     <div class="box">
-        {{#each songsWritten}}
-            {{@key}}
-            <br />
-            <ul>
-                {{#each this}}
-                    <li>
-                        {{name}} - {{fname}}
-                    </li>
-                {{/each}}
-            </ul>
+    {{#each songsWritten}}
+        <h2 class="center-text">~ {{@key}} ~</h2>
+        <ul class="songs">
+        {{#each this}}
+            <li class="song-link">
+                <a class="song-link" href="{{fname}}" target="_blank">
+                    <span class="song-link-name">{{name}}</span>
+                    <span class="song-link-button blue-button">Go</span>
+                </a>
+            </li>
         {{/each}}
-
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        </ul>
+        <br /><hr /><br />
+    {{/each}}
     </div>
 </body>
 
@@ -57,22 +46,15 @@
             cellsize: 120
         });
 
-        // We'll make the image twice the size of window. The browser will
-        // scale the image down to the right size and if the user changes the
-        // size, (hopefully), there's enough image to cover the new area.
-        //
-        // This is the least clumsy auto-resize method I've found.
-        //
-        // (just let that sink in)
-        var $win = $(window);
-        var pattern = t.generate($win.width() * 2, $win.height() * 2);
+        var $win = $(document);
+        var pattern = t.generate($win.width(), $win.height());
         $('body').css('background-image', pattern.dataUrl);
     }
 
-    // I don't know what in creation to call this.
+    // I don't know what in Creation to call this.
     function startBackgroundCoolThing() {
         generateBackground();
-        setInterval(generateBackground, 20 * 1000);
+        setInterval(generateBackground, 60 * 1000);
     }
 
     function init() {
