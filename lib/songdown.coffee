@@ -25,7 +25,6 @@ class Songdown
     handleNames: (name) ->
         title = name.replace /\.songdown$/, ''
         fname = title.replace(/\s/g, '_') + '.html'
-        @songsWritten.push {fname, title}
         [title, fname]
 
     renderSong: (name, title) ->
@@ -37,8 +36,16 @@ class Songdown
         opath = path.join @outputDir, fname
         fs.writeFileSync opath, html
 
+    handleIndexEntry: (title, fname) ->
+        splitted = title.split '-'
+        artist = splitted.shift().trim()
+        name = splitted.join '-'
+
+        @songsWritten[artist] ?= []
+        @songsWritten[artist].push {fname, name}
+
     renderIndex: ->
-        return unless @songsWritten.length > 0
+        return unless _.size(Object.keys(@songsWritten)) > 0
         @outputIndex Mustache.render templates.index, songsWritten: @songsWritten
 
     outputIndex: (html) ->
@@ -49,5 +56,6 @@ class Songdown
             [title, fname] = @handleNames name
             html = @renderSong name, title
             @outputSong fname, html
+            @handleIndexEntry title, fname
 
         @renderIndex()
