@@ -53,9 +53,6 @@ body.index-bg {
 }
 
 ul.songs {
-    column-count: 2;
-    -webkit-columns: 2;
-
     margin-left: auto;
     margin-right: auto;
     width: 70%;
@@ -64,6 +61,7 @@ ul.songs {
 li.song-link {
     padding: 8px;
     height: 30px;
+    list-style: none;
 }
 
 a.song-link {

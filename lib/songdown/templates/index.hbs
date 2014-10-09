@@ -41,29 +41,24 @@
 </body>
 
 <script type="text/javascript">
+    var doc = window.document;
+
     function generateBackground() {
         var t = new Trianglify({
             noiseIntensity: 0,
             cellsize: 120
         });
 
-        var $win = $(document);
+        var $win = $(doc);
         var pattern = t.generate($win.width(), $win.height());
         $('body').css('background-image', pattern.dataUrl);
     }
 
-    // I don't know what in Creation to call this.
-    function startBackgroundCoolThing() {
+    function init() {
         generateBackground();
         setInterval(generateBackground, 60 * 1000);
     }
 
-    function init() {
-        startBackgroundCoolThing();
-    }
-
-    $(document).ready(init);
+    $(doc).ready(init);
 </script>
-
-
 </html>
