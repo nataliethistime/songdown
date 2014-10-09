@@ -64,7 +64,7 @@ class GotoVerse extends Node
         line = @section.replace Tokens.GOTO, ''
 
         # Let's take this slow...
-        dynamicsMatch = _.first(/\(\S+\)/i.exec(line)) or null
+        dynamicsMatch = _.first(/\(.+\)/i.exec(line)) or null
         repeatMatch   = _.first(/x\s?\d+/i.exec(line)) or null
 
         # Attempt to get the title of the verse, that this goto is referring to, by itself.
@@ -83,8 +83,6 @@ class GotoVerse extends Node
 
         # The final thing that we've made.
         html = [title, dynamics, repeat].join ' '
-
-
         "<p>Play #{html}</p>"
 
 
