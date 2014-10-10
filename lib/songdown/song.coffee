@@ -27,7 +27,6 @@ class Song
 
         return unless _.size(lines) > 0
 
-        #
         verseClass = null
         verseStartIndex = -1
 
