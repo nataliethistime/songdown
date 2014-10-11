@@ -49,14 +49,22 @@
             cellsize: 120
         });
 
-        var $win = $(doc);
-        var pattern = t.generate($win.width(), $win.height());
+        var $doc = $(doc);
+        var pattern = t.generate($doc.width(), $doc.height());
         $('body').css('background-image', pattern.dataUrl);
     }
 
+    var interval = null;
+    function resetInterval() {
+        clearInterval(interval);
+        interval = setInterval(generateBackground, 60 * 1000);
+    }
+
     function init() {
+        // Do the background thang.
         generateBackground();
-        setInterval(generateBackground, 60 * 1000);
+        resetInterval();
+        $(doc).scroll(resetInterval);
     }
 
     $(doc).ready(init);
