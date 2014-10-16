@@ -1,1 +1,1 @@
-web: PORT=80 node script/start.js
+web: node script/start.js
