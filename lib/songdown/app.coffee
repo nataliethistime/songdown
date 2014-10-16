@@ -3,11 +3,14 @@
 path = require 'path'
 express = require 'express'
 app = express()
+logfmt = require 'logfmt'
 
 port = process.env.PORT or 5000
 
 app.use express.static path.join __dirname, '..', '..', 'static'
+app.use logfmt.requestLogger()
 app.set 'bookshelf', require './bookshelf-init'
+
 app.listen port, ->
 
     host = @address().address
