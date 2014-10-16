@@ -1,37 +1,16 @@
 'use strict'
 
+path = require 'path'
 express = require 'express'
 app = express()
 
-path = require 'path'
-
-
-knex = require('knex')(
-    client: 'pg',
-    connection: "what the heck?"
-)
-
-bookshelf = require('bookshelf')(knex);
-
-User = bookshelf.Model.extend
-    tableName: 'users'
-
 app.use express.static path.join __dirname, '..', '..', 'static'
+app.set 'bookshelf', require './bookshelf-init'
+app.listen 5000, ->
 
-server = app.listen 5000, ->
+    host = @address().address
+    port = @address().port
 
-    host = server.address().address
-    port = server.address().port
+    console.log "Songdown listening at http://#{host}:#{port}"
 
-    console.log "Example app listening at http://#{host}:#{port}"
-
-
-    ################
-    #### ROUTES ####
-    ################
-
-templates = require './templates'
-
-app.route '/'
-    .get (req, res) ->
-        res.end templates.index {}
+module.exports = app
