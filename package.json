@@ -12,12 +12,16 @@
   },
   "homepage": "https://github.com/Vasari/songdown",
   "dependencies": {
+    "bookshelf": "0.7.7",
     "coffee-script": "1.8.0",
     "express": "4.9.7",
     "glob": "4.0.6",
     "handlebars": "2.0.0",
+    "knex": "0.7.3",
     "lodash": "2.4.1",
     "marked": "0.3.2",
-    "normalize-newline": "1.0.1"
+    "normalize-newline": "1.0.1",
+    "pg": "git+https://github.com/WhoopInc/node-pg-pure-alias.git#1.0.0",
+    "pg.js": "3.5.0"
   }
 }

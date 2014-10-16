@@ -5,6 +5,17 @@ app = express()
 
 path = require 'path'
 
+
+knex = require('knex')(
+    client: 'pg',
+    connection: "what the heck?"
+)
+
+bookshelf = require('bookshelf')(knex);
+
+User = bookshelf.Model.extend
+    tableName: 'users'
+
 app.use express.static path.join __dirname, '..', '..', 'static'
 
 server = app.listen 5000, ->
