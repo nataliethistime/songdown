@@ -24,8 +24,7 @@
     "lodash": "2.4.1",
     "logfmt": "1.2.0",
     "marked": "0.3.2",
-    "normalize-newline": "1.0.1",
-    "pg": "git+https://github.com/WhoopInc/node-pg-pure-alias.git#1.0.0",
-    "pg.js": "3.5.0"
+    "mysql": "2.5.2",
+    "normalize-newline": "1.0.1"
   }
 }
