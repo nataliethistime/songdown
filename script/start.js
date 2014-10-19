@@ -3,7 +3,7 @@
 require('coffee-script').register();
 
 var path = require('path');
-var location = path.join(__dirname, '..', 'lib', 'songdown', 'app-init');
+var location = path.join(__dirname, '..', 'lib', 'app');
 
 // Clear the cache so that everything is reloaded properly.
 require.cache = {};

@@ -1,5 +1,5 @@
 'use strict'
 
-app = require './app'
+app = module.exports = require './init'
 routes = require './routes'
 routes.init app
