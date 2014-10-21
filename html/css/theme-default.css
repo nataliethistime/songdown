@@ -1,0 +1,23 @@
+
+/* This theme is for the average poor man who's printer ain't that fancy */
+
+
+.verse.chords {
+    font-weight: bold;
+}
+.verse.title {
+    font-style: italic;
+    text-decoration: underline;
+}
+
+
+.goto.title {
+    font-style: italic;
+    text-decoration: underline;
+}
+.goto.dynamics {
+    font-style: italic;
+}
+.goto.repeat {
+    /* I haven't been able to think of anything interesting to do with this. */
+}

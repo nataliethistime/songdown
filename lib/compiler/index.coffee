@@ -7,8 +7,10 @@ path = require 'path'
 fs = require 'fs'
 normalizeNewline = require 'normalize-newline'
 
-templates = require './songdown/templates'
-Song = require './songdown/song'
+# WARNING: this require path **WILL** change in future!!!!
+templates = require './../app/templates'
+
+Song = require './song'
 
 module.exports =
 class Songdown

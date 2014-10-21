@@ -1,0 +1,25 @@
+
+/* This theme is for the guy (or gal!) with a colour printer 'n' stuff */
+
+.verse.chords {
+    font-weight: bold;
+    color: #FF4136;
+}
+.verse.title {
+    text-decoration: underline;
+    color: #0033CC;
+}
+
+
+.goto.title {
+    text-decoration: underline;
+    color: #0033CC;
+}
+.goto.dynamics {
+    font-style: italic;
+    color: green;
+}
+.goto.repeat {
+    font-weight: bold;
+    color: #85144B;
+}
