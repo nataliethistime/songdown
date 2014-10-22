@@ -8,11 +8,10 @@ module.exports.init = (app) ->
 
     bookshelf = app.get 'bookshelf'
     songdown = app.get 'songdown'
-    songs = songdown.loadSongs()
 
     app.route '/'
         .get (req, res) ->
-            res.end index {songs}
+            res.end index {songs: songdown.loadSongs()}
 
     app.route '/song/:name'
         .get (req, res) ->

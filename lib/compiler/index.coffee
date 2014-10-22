@@ -15,19 +15,20 @@ class Songdown
     constructor: (args = {}) ->
 
         {@inputDir, @outputDir} = args
-        @songs = {}
 
     getFiles: ->
         glob.sync '*.songdown', cwd: @inputDir
 
     loadSongs: ->
+        songs = {}
+
         _.each @getFiles(), (name) =>
             [name, title, location, artist] = @handleNames name
 
-            @songs[artist] ?= []
-            @songs[artist].push {name, title, location, artist}
+            songs[artist] ?= []
+            songs[artist].push {name, title, location, artist}
 
-        @songs
+        songs
 
     handleNames: (name) ->
         name = name.trim()
