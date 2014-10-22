@@ -23,13 +23,13 @@
 
     <!-- The rest of the page belongs here. -->
     <div class="box">
-    {{#each songsWritten}}
+    {{#each songs}}
         <h2 class="center-text">~ {{@key}} ~</h2>
         <ul class="songs">
         {{#each this}}
             <li class="song-link">
-                <a class="song-link" href="{{fname}}" target="_blank">
-                    <span class="song-link-name">{{name}}</span>
+                <a class="song-link" href="/song/{{title}}" target="_blank">
+                    <span class="song-link-name">{{title}}</span>
                     <span class="song-link-button blue-button">Go</span>
                 </a>
             </li>

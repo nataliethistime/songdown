@@ -8,11 +8,11 @@ var FADE_TIME = 300; // milli-seconds
 var THEMES = [
     {
         name : 'Default',
-        url  : 'static/css/theme-default.css'
+        url  : 'css/theme-default.css'
     },
     {
         name : 'Colourful',
-        url  : 'static/css/theme-colourful.css'
+        url  : 'css/theme-colourful.css'
     }
 ];
 
