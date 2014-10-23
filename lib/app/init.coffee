@@ -5,9 +5,6 @@ express = require 'express'
 app = express()
 logfmt = require 'logfmt'
 
-knexFunc = require 'knex'
-bookshelfFunc = require 'bookshelf'
-
 # The most important part is here...
 Songdown = require './../compiler'
 
@@ -15,24 +12,18 @@ Songdown = require './../compiler'
 songdown = new Songdown
     inputDir:  path.join __dirname, '..', '..', 'songs'
 
-
-# TODO: we may not need a db of any kind FIXME.....
-knex = knexFunc
-    client: 'mysql'
-    connection:
-        host: 'localhost'
-        user: 'root'
-        password: '123qwe'
-        database: 'songdown_dev'
-        #debug: yes
-
+# Mount the static dir onto / and /song so that everything has access to the stuff.
 app.use           express.static path.join __dirname, '..', '..', 'static'
 app.use '/song/', express.static path.join __dirname, '..', '..', 'static'
+
+# This is just a 'recommended logger' or something.
 app.use logfmt.requestLogger()
-app.set 'bookshelf', bookshelfFunc knex
+
+# Store the reference to the intiialized Songdown object so that other stuff has access.
 app.set 'songdown', songdown
 
-
+# Finally, setup the server. Heroku sets the PORT env var so that everything gets
+# setup on the right port.
 port = process.env.PORT or 5000
 app.listen port, ->
     host = @address().address
