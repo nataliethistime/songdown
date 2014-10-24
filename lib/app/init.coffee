@@ -9,8 +9,9 @@ logfmt = require 'logfmt'
 Songdown = require './../compiler'
 
 # Setup the leading man of the scene...
+songDir = path.join __dirname, '..', '..', 'songs'
 songdown = new Songdown
-    inputDir:  path.join __dirname, '..', '..', 'songs'
+    inputDir:  songDir
 
 # Mount the static dir onto / and /song so that everything has access to the stuff.
 app.use           express.static path.join __dirname, '..', '..', 'static'
@@ -21,13 +22,10 @@ app.use logfmt.requestLogger()
 
 # Store the reference to the intiialized Songdown object so that other stuff has access.
 app.set 'songdown', songdown
+app.set 'songDir', songDir
 
 # Finally, setup the server. Heroku sets the PORT env var so that everything gets
 # setup on the right port.
-port = process.env.PORT or 5000
-app.listen port, ->
-    host = @address().address
-    console.log "Songdown listening at http://#{host}:#{port}"
-
+app.set 'port', process.env.PORT or 5000
 
 module.exports = app
