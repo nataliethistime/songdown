@@ -11,8 +11,13 @@ class Node
     toHtml: -> throw new Error 'override me please!!!'
 
 
-# Some simple methods
-chordsLine = (line) -> '<pre class="verse chords">' + line + '<br /></pre>'
+chordsLine = (line) ->
+    # Do proper flat and sharp symbols.
+    line = line.replace /b/g, '&#9837;'
+    line = line.replace /#/g, '&#9839;'
+
+    '<pre class="verse chords">' + line + '<br /></pre>'
+
 lyricsLine = (line) -> '<pre class="verse lyrics">' + line + '<br /></pre>'
 verseBlock = (lines) -> '<span class="verse">' + lines.join("\n") + '</span>'
 
@@ -41,12 +46,14 @@ class VerseCommon extends Node
         verseBlock lines
 
 
+# This verse just has chords.
 class VerseChords extends Node
     toHtml: ->
         lines = _.map @section, chordsLine
         verseBlock lines
 
 
+# This verse just has lyrics.
 class VerseLyrics extends Node
     toHtml: ->
         lines = _.map @section, lyricsLine
