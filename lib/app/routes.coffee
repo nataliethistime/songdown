@@ -13,11 +13,11 @@ module.exports.init = (app) ->
         .get (req, res) ->
             res.end index {songs: songdown.loadSongs()}
 
-    app.route '/song/:name'
+    app.route '/song/:fname'
         .get (req, res) ->
 
-            name = req.param('name') + '.songdown'
-            [name, title, location, artist] = songdown.handleNames name
+            fname = req.param 'fname'
+            [fname, location, artist, track] = songdown.handleNames fname
             html = songdown.render location
 
-            res.send song {title, html}
+            res.send song {artist, track, html}

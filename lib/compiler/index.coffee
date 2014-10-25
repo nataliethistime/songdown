@@ -23,21 +23,26 @@ class Songdown
         songs = {}
 
         _.each @getFiles(), (name) =>
-            [name, title, location, artist] = @handleNames name
+            [fname, location, artist, track] = @handleNames name
 
             songs[artist] ?= []
-            songs[artist].push {name, title, location, artist}
+            songs[artist].push {fname, location, artist, track}
 
         songs
 
-    handleNames: (name) ->
-        name = name.trim()
-        title = name.replace /\.songdown$/, ''
-        location = path.join @inputDir, name
-        artist = title.split('-').shift().trim()
-        title = title.trim()
+    handleNames: (fname) ->
+        track = fname.replace(/\.songdown$/, '').split '-'
+        artist = track.shift().trim()
+        track = track.join ''
+        location = path.join @inputDir, fname
 
-        [name, title, location, artist]
+        # Hillsong - Our God.songdown
+        #
+        # fname    => 'Hillsong - Our God.songdown'
+        # location => 'full/path/to/Hillsong - Our God.songdown'
+        # artist   => 'Hillsong'
+        # track    => 'Our God'
+        [fname.trim(), location, artist.trim(), track.trim()]
 
     render: (location) ->
         buffer = fs.readFileSync location
