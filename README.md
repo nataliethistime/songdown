@@ -3,6 +3,12 @@ songdown
 
 Guitar lyrics and chords in a markdown-like syntax. [![Dependency Status](https://david-dm.org/Vasari/songdown.svg?style=flat-square)](https://david-dm.org/Vasari/songdown)
 
+Changes
+=======
+
+### v1.0.0
+- Initial version
+
 License
 =======
 
