@@ -105,6 +105,16 @@ a.song-link {
 }
 
 
+/* TODO implement this laterz! */
+#refresh-button {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    display: none;
+}
+
+
+
 @media print {
     /* Do this to avoid cutting verses off across pages. */
     .verse {
