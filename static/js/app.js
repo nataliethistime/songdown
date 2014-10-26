@@ -4,17 +4,21 @@
 var FONT_SIZE = 16;
 var FADE_TIME = 300; // milli-seconds
 
-// All the themes 'n' stuff stuff.
+// All the themes 'n' stuff.
 var THEMES = [
     {
         name : 'Default',
-        url  : 'css/theme-default.css'
+        url  : themeUrl('default')
     },
     {
         name : 'Colourful',
-        url  : 'css/theme-colourful.css'
+        url  : themeUrl('colourful')
     }
 ];
+
+function themeUrl(name) {
+    return window.ASSETS_URL + '/css/theme-' + name + '.css';
+}
 
 function init() {
     $('#fontSize').attr('value', FONT_SIZE);

@@ -3,13 +3,13 @@
 <head>
     <title>{{track}}</title>
 
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="{{assetsUrl}}/css/styles.css">
 
     <!-- There's JS code to handle what the href of this element becomes. -->
     <link id="themeCssElement" rel="stylesheet" type="text/css" href="">
 
-    <script type="text/javascript" src="js/vendor/anchor.js"></script>
-    <link rel="stylesheet" href="css/vendor/anchor.css">
+    <script type="text/javascript" src="{{assetsUrl}}/js/vendor/anchor.js"></script>
+    <link rel="stylesheet" href="{{assetsUrl}}/css/vendor/anchor.css">
 </head>
 
 
@@ -39,7 +39,11 @@
     </div>
 </body>
 
-<script type="text/javascript" src="js/vendor/jquery.js"></script>
-<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript">
+    window.ASSETS_URL = '{{assetsUrl}}';
+</script>
+
+<script type="text/javascript" src="{{assetsUrl}}/js/vendor/jquery.js"></script>
+<script type="text/javascript" src="{{assetsUrl}}/js/app.js"></script>
 
 </html>
