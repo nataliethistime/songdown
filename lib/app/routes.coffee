@@ -2,8 +2,6 @@
 
 {index, song} = require './templates'
 
-_ = require 'lodash'
-
 module.exports.init = (app) ->
 
     bookshelf = app.get 'bookshelf'
