@@ -1,12 +1,11 @@
 'use strict'
 
-{index, song} = require './templates'
-# Document = require './../compiler/document'
+templates = require './templates'
+
+{songs} = require './../compiler'
+Song = require './../compiler/song'
 
 module.exports.init = (app) ->
-
-    bookshelf = app.get 'bookshelf'
-    songdown = app.get 'songdown'
 
     assetsUrl = if process.env.PRODUCTION
         'http://songdown.herokuapp.com/static'
@@ -17,26 +16,27 @@ module.exports.init = (app) ->
     # Index
     app.route '/'
         .get (req, res) ->
-            res.end index {songs: songdown.loadSongs(), assetsUrl}
+            res.end templates.index {songs: songs(app.get('songDir')), assetsUrl}
 
     # Song view
     app.route '/song/:fname'
         .get (req, res) ->
 
-            fname = req.param 'fname'
-            [fname, location, artist, track] = songdown.handleNames fname
-            html = songdown.render location
+            song = new Song req.param('fname'), app.get 'songDir'
 
-            res.send song {artist, track, html, assetsUrl}
+            res.send templates.song
+                artist: song.getArtist()
+                assetsUrl: assetsUrl
+                html: song.toHtml()
+                track: song.getTrack()
 
 
     # Transpose a song
-    app.route '/song/transpose/:fname/:amount'
-        .get (req, res) ->
-
-            fname = req.param 'fname'
-            interval = req.param 'interval'
-            [fname, location, artist, track] = songdown.handleNames fname
-            html = songdown.render location
-
-            res.send song {artist, track, html}
+    # app.route '/song/transpose/:fname/:amount'
+    #     .get (req, res) ->
+    #
+    #         fname = req.param 'fname'
+    #         interval = req.param 'interval'
+    #         html = songdown.render location
+    #
+    #         res.send song {artist, track, html}

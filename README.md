@@ -6,6 +6,10 @@ Guitar lyrics and chords in a markdown-like syntax. [![Dependency Status](https:
 Changes
 =======
 
+### v1.0.1
+- Adjusted the way the front-end site loads needed files.
+- Massive changes to the internal setup of the site.
+
 ### v1.0.0
 - Initial version
 

@@ -1,22 +1,52 @@
 'use strict'
 
+path = require 'path'
+fs = require 'fs'
+
 _ = require 'lodash'
+normalizeNewline = require 'normalize-newline'
 
 Tokens = require './tokens'
 Nodes = require './nodes'
 
-module.exports =
 class Song
-    constructor: (text) ->
-        @text = text
-        @nodes = []
+    constructor: (fname, @songDir) ->
 
-        # Let's do this!
-        _.each @text.split(Tokens.VERSE_END), @parseSection
+        [@fname, @location, @artist, @track] = @handleNames fname
+        @text = null
+        @nodes = null
+
+    handleNames: (fname) ->
+        track = fname.replace(/\.songdown$/, '').split '-'
+        artist = track.shift().trim()
+        track = track.join ''
+        location = path.join @songDir, fname
+
+        # Given 'Hillsong - Our God.songdown':
+        # fname    => 'Hillsong - Our God.songdown'
+        # location => 'full/path/to/Hillsong - Our God.songdown'
+        # artist   => 'Hillsong'
+        # track    => 'Our God'
+        [fname.trim(), location, artist.trim(), track.trim()]
+
+
+    getArtist:   -> @artist
+    getFname:    -> @fname
+    getLocation: -> @location
+    getNodes:    -> @nodes
+    getText:     -> @text
+    getTrack:    -> @track
+
+    getNames: ->
+        artist:   @getArtist()
+        fname:    @getFname()
+        location: @getLocation()
+        track:    @getTrack()
+
 
     # One section is the chunk of text from the line after the last verse end
     # to the next verse end point. This means there is exactly one verse and
-    # sometimes a markdown node we need to find in each section.
+    # sometimes a comment node we need to find in each section.
     parseSection: (section) =>
 
         # Filter out blank lines or newlines. This allows the user to be very
@@ -76,6 +106,19 @@ class Song
 
         @nodes.push new Nodes.Comments(storage) if _.size(lines) > 0
 
+    load: ->
+        @text = normalizeNewline fs.readFileSync(@location).toString()
+
+    parse: ->
+        @nodes = []
+        _.each @text.split(Tokens.VERSE_END), @parseSection
+
     toHtml: ->
+
+        @load() if not @text?
+        @parse() if not @nodes?
+
         _.map @nodes, (node) -> node.toHtml()
             .join "\n"
+
+module.exports = Song
