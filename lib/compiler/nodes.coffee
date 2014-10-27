@@ -13,8 +13,10 @@ class Node
 
 chordsLine = (line) ->
     # Do proper flat and sharp symbols.
-    line = line.replace /b/g, '&#9837;'
+    # IMPORTANT: the sharps are done first becuase there is a # in the HTML entity code for each of
+    # the sharps and flats.
     line = line.replace /#/g, '&#9839;'
+    line = line.replace /b/g, '&#9837;'
 
     '<pre class="verse chords">' + line + '<br /></pre>'
 
