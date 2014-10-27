@@ -8,11 +8,13 @@ normalizeNewline = require 'normalize-newline'
 
 Tokens = require './tokens'
 Nodes = require './nodes'
+{transposeChord} = require './../util/transposer'
 
 class Song
     constructor: (fname, @songDir) ->
 
         [@fname, @location, @artist, @track] = @handleNames fname
+        @names = {@artist, @fname, @location, @track}
         @text = null
         @nodes = null
 
@@ -28,20 +30,6 @@ class Song
         # artist   => 'Hillsong'
         # track    => 'Our God'
         [fname.trim(), location, artist.trim(), track.trim()]
-
-
-    getArtist:   -> @artist
-    getFname:    -> @fname
-    getLocation: -> @location
-    getNodes:    -> @nodes
-    getText:     -> @text
-    getTrack:    -> @track
-
-    getNames: ->
-        artist:   @getArtist()
-        fname:    @getFname()
-        location: @getLocation()
-        track:    @getTrack()
 
 
     # One section is the chunk of text from the line after the last verse end
@@ -106,12 +94,20 @@ class Song
 
         @nodes.push new Nodes.Comments(storage) if _.size(lines) > 0
 
+    loadConfigValues: ->
+
+        # Go through each comment node and find possible config values
+        _.each @nodes, (node) ->
+            # TODO implement this!!!
+
     load: ->
         @text = normalizeNewline fs.readFileSync(@location).toString()
 
     parse: ->
         @nodes = []
         _.each @text.split(Tokens.VERSE_END), @parseSection
+
+        @loadConfigValues()
 
     toHtml: ->
 
@@ -120,5 +116,8 @@ class Song
 
         _.map @nodes, (node) -> node.toHtml()
             .join "\n"
+
+    transpose: (increment) ->
+        # do stuff
 
 module.exports = Song

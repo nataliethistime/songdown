@@ -16,7 +16,8 @@ module.exports.init = (app) ->
     # Index
     app.route '/'
         .get (req, res) ->
-            res.end templates.index {songs: songs(app.get('songDir')), assetsUrl}
+            songs = songs app.get 'songDir'
+            res.end templates.index {songs, assetsUrl}
 
     # Song view
     app.route '/song/:fname'
@@ -25,18 +26,18 @@ module.exports.init = (app) ->
             song = new Song req.param('fname'), app.get 'songDir'
 
             res.send templates.song
-                artist: song.getArtist()
+                artist: song.artist
                 assetsUrl: assetsUrl
                 html: song.toHtml()
-                track: song.getTrack()
+                track: song.track
+                fname: song.fname
 
 
     # Transpose a song
-    # app.route '/song/transpose/:fname/:amount'
-    #     .get (req, res) ->
-    #
-    #         fname = req.param 'fname'
-    #         interval = req.param 'interval'
-    #         html = songdown.render location
-    #
-    #         res.send song {artist, track, html}
+    app.route '/song/transpose/:fname/:increment'
+        .get (req, res) ->
+
+            song = new Song req.param('fname'), app.get 'songDir'
+            song.transpose req.param 'increment'
+
+            res.send song.toHtml()

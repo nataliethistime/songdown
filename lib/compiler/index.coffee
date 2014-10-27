@@ -14,7 +14,7 @@ module.exports.songs = (songDir) ->
 
     _.each files, (name) ->
         song = new Song name, songDir
-        songs[song.getArtist()] ?= []
-        songs[song.getArtist()].push song.getNames()
+        songs[song.artist] ?= []
+        songs[song.artist].push song.names
 
     songs
