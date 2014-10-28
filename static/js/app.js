@@ -50,6 +50,19 @@ function initEvents() {
         changeTheme($(this).val());
     });
 
+    $('#transposeSelector').off().on('change', function() {
+        var increment = parseInt($(this).val(), 10);
+
+        // Do a lil HTTP request here.
+        $.get('/song/transpose/' + window.FNAME + '/' + increment, function(data) {
+            if (data) {
+                $('#song').fadeOut(FADE_TIME, function() {
+                    $(this).html(data).fadeIn(FADE_TIME);
+                });
+            }
+        });
+    });
+
     // Note: a CSS media query handles the hiding of the sidebar and making
     //   sure that none of the verses are cut across pages.
     $('#printButton').off().on('click', function(event) {
