@@ -6,9 +6,12 @@ routes = require './routes'
 # Download all the songs and get started.
 down = require 'download-github-repo'
 
+{isEmptySync} = require 'extfs'
+
 console.log 'Downloading the songs'
 down 'Vasari/songdown-songs', app.get('songDir'), (err) ->
-    if err
+
+    if err and isEmptySync app.get 'songDir'
         throw new Error err
 
     console.log 'Initializing routes'
