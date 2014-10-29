@@ -4,11 +4,8 @@
 <head>
     <title>Songdown Collection</title>
 
-    <script src="{{assetsUrl}}/js/vendor/jquery.js"></script>
-    <script src="{{assetsUrl}}/js/vendor/d3.js"></script>
-    <script src="{{assetsUrl}}/js/vendor/trianglify.js"></script>
+    <script type="text/javascript" src="{{assetsUrl}}/{{crshUrl}}"></script>
 
-    <link rel="stylesheet" type="text/css" href="{{assetsUrl}}/css/vendor/colors.css">
     <link rel="stylesheet" type="text/css" href="{{assetsUrl}}/css/styles.css">
 
 </head>
@@ -42,34 +39,4 @@
 
     <img id="refresh-button" src="{{assetsUrl}}/assets/refresh.png" title="Refresh the songs from Github" />
 </body>
-
-<script type="text/javascript">
-    var doc = window.document;
-
-    function generateBackground() {
-        var t = new Trianglify({
-            noiseIntensity: 0,
-            cellsize: 120
-        });
-
-        var $doc = $(doc);
-        var pattern = t.generate($doc.width(), $doc.height());
-        $('body').css('background-image', pattern.dataUrl);
-    }
-
-    var interval = null;
-    function resetInterval() {
-        clearInterval(interval);
-        interval = setInterval(generateBackground, 60 * 1000);
-    }
-
-    function init() {
-        // Do the background thang.
-        generateBackground();
-        resetInterval();
-        $(doc).scroll(resetInterval);
-    }
-
-    $(doc).ready(init);
-</script>
 </html>

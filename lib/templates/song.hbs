@@ -3,12 +3,11 @@
 <head>
     <title>{{track}}</title>
 
-    <link rel="stylesheet" type="text/css" href="{{assetsUrl}}/css/styles.css">
 
     <!-- There's JS code to handle what the href of this element becomes. -->
     <link id="themeCssElement" rel="stylesheet" type="text/css" href="">
 
-    <script type="text/javascript" src="{{assetsUrl}}/js/vendor/anchor.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{assetsUrl}}/css/styles.css">
     <link rel="stylesheet" href="{{assetsUrl}}/css/vendor/anchor.css">
 </head>
 
@@ -43,7 +42,7 @@
             <option value="-3">-3</option>
             <option value="-2">-2</option>
             <option value="-1">-1</option>
-            <option value="null" selected="true">0</option>
+            <option value="0" selected="true">0</option>
             <option value="1">+1</option>
             <option value="2">+2</option>
             <option value="3">+3</option>
@@ -60,8 +59,5 @@
     window.ASSETS_URL = '{{assetsUrl}}';
     window.FNAME = '{{fname}}';
 </script>
-
-<script type="text/javascript" src="{{assetsUrl}}/js/vendor/jquery.js"></script>
-<script type="text/javascript" src="{{assetsUrl}}/js/app.js"></script>
-
+<script type="text/javascript" src="{{assetsUrl}}/{{crshUrl}}"></script>
 </html>

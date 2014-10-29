@@ -2,7 +2,7 @@
 
 templates = require './templates'
 
-{songs} = require './../compiler'
+loadSongs = require('./../compiler').songs
 Song = require './../compiler/song'
 
 module.exports.init = (app) ->
@@ -12,18 +12,22 @@ module.exports.init = (app) ->
     else
         "http://localhost:#{app.get 'port'}/static"
 
+    songDir = app.get 'songDir'
+
 
     # Index
     app.route '/'
         .get (req, res) ->
-            songs = songs app.get 'songDir'
-            res.end templates.index {songs, assetsUrl}
+            songs = loadSongs songDir
+            crshUrl = req.crsh.libs.name
+            res.end templates.index {songs, assetsUrl, crshUrl}
 
     # Song view
     app.route '/song/:fname'
         .get (req, res) ->
 
-            song = new Song req.param('fname'), app.get 'songDir'
+            song = new Song req.param('fname'), songDir
+            crshUrl = req.crsh.libs.name
 
             res.send templates.song
                 artist: song.artist
@@ -31,13 +35,4 @@ module.exports.init = (app) ->
                 html: song.toHtml()
                 track: song.track
                 fname: song.fname
-
-
-    # Transpose a song
-    app.route '/song/transpose/:fname/:increment'
-        .get (req, res) ->
-
-            song = new Song req.param('fname'), app.get 'songDir'
-            song.transpose req.param 'increment'
-
-            res.send song.toHtml()
+                crshUrl: crshUrl
