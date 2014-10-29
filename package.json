@@ -16,9 +16,9 @@
   "homepage": "https://github.com/Vasari/songdown",
   "dependencies": {
     "coffee-script": "1.8.0",
-    "crsh": "^0.3.2",
+    "crsh": "0.3.2",
     "download-github-repo": "0.1.3",
-    "express": "4.9.7",
+    "express": "4.10.1",
     "extfs": "0.0.7",
     "glob": "4.0.6",
     "handlebars": "2.0.0",
