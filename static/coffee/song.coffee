@@ -113,9 +113,10 @@ changeTheme = (url) ->
         $(this).val() is url
     )[0]
 
-    return unless el
+    return unless el?
 
-    $(el).attr 'selected', true
+    $ el
+        .attr 'selected', true
 
     # Store for next time.
     localStorage.lastUsedTheme = url

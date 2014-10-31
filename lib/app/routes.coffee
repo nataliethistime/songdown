@@ -7,7 +7,7 @@ Song = require './../compiler/song'
 
 module.exports.init = (app) ->
 
-    assetsUrl = if process.env.PRODUCTION
+    assetsUrl = if process.env.NODE_ENV is 'production'
         'http://songdown.herokuapp.com/static'
     else
         "http://localhost:#{app.get 'port'}/static"

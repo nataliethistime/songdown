@@ -1,1 +1,1 @@
-web: PRODUCTION=1 node script/start.js
+web: node script/start.js
