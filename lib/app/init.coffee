@@ -10,9 +10,9 @@ staticDir = path.join __dirname, '..', '..', 'static'
 
 app.use Crsh.middleware staticDir,
     libs: [
+        './js/vendor/jquery.js'
         './js/vendor/anchor.js'
         './js/vendor/d3.js'
-        './js/vendor/jquery.js'
         './js/vendor/trianglify.js'
         './coffee/song.coffee'
         './coffee/index.coffee'
