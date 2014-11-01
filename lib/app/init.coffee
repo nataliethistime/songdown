@@ -6,6 +6,15 @@ app = express()
 logfmt = require 'logfmt'
 Crsh = require 'crsh'
 
+# Do some stuff to force HTTPS all the time.
+forceSsl = (req, res, next) ->
+    if req.headers['x-forwarded-proto'] isnt 'https'
+        res.redirect "https://#{req.get 'host'}#{req.url}"
+    else
+        next()
+
+app.use(forceSsl) if process.env.PRODUCTION
+
 staticDir = path.join __dirname, '..', '..', 'static'
 
 app.use Crsh.middleware staticDir,
