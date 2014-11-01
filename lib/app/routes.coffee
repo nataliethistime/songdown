@@ -10,6 +10,7 @@ module.exports.init = (app) ->
     songDir = app.get 'songDir'
 
     getAssetsUrl = (req) ->
+        console.log req.protocol
         if process.env.PRODUCTION?
             "#{req.protocol}://songdown.herokuapp.com/static"
         else
