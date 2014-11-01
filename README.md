@@ -8,6 +8,7 @@ Changes
 
 ### v1.0.1
 - Adjusted the way the front-end site loads needed files.
+- Force the site to use SSL in production mode.
 - Massive changes to the internal setup of the site.
 
 ### v1.0.0
