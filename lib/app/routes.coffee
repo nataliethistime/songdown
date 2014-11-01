@@ -7,14 +7,13 @@ Song = require './../compiler/song'
 
 module.exports.init = (app) ->
 
-    assetsUrl = if process.env.PRODUCTION?
-        console.log 'Using the production assetsUrl'
-        'https://songdown.herokuapp.com/static'
-    else
-        console.log 'Using the development assetsUrl'
-        "https://localhost:#{app.get 'port'}/static"
-
     songDir = app.get 'songDir'
+
+    getAssetsUrl = (req) ->
+        if process.env.PRODUCTION?
+            "#{req.protocol}://songdown.herokuapp.com/static"
+        else
+            "#{req.protocol}://localhost:#{app.get 'port'}/static"
 
 
     # Index
@@ -22,7 +21,7 @@ module.exports.init = (app) ->
         .get (req, res) ->
             songs = loadSongs songDir
             crshUrl = req.crsh.libs.name
-            res.end templates.index {songs, assetsUrl, crshUrl}
+            res.end templates.index {songs, assetsUrl: getAssetsUrl(req), crshUrl}
 
     # Song view
     app.route '/song/:fname'
@@ -33,7 +32,7 @@ module.exports.init = (app) ->
 
             res.send templates.song
                 artist: song.artist
-                assetsUrl: assetsUrl
+                assetsUrl: getAssetsUrl(req)
                 html: song.toHtml()
                 track: song.track
                 fname: song.fname
