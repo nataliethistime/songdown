@@ -9,10 +9,10 @@ module.exports.init = (app) ->
 
     assetsUrl = if process.env.PRODUCTION?
         console.log 'Using the production assetsUrl'
-        'http://songdown.herokuapp.com/static'
+        'https://songdown.herokuapp.com/static'
     else
         console.log 'Using the development assetsUrl'
-        "http://localhost:#{app.get 'port'}/static"
+        "https://localhost:#{app.get 'port'}/static"
 
     songDir = app.get 'songDir'
 
