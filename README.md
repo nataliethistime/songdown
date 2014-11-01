@@ -6,12 +6,13 @@ Guitar lyrics and chords in a markdown-like syntax. [![Dependency Status](https:
 Changes
 =======
 
-### v1.0.1
+### v1.0.1 (2014/11/01)
 - Adjusted the way the front-end site loads needed files.
 - Force the site to use SSL in production mode.
 - Massive changes to the internal setup of the site.
+- Added unimplemented warning to the transpose feature.
 
-### v1.0.0
+### v1.0.0 (2014/10/25)
 - Initial version
 
 License

@@ -56,6 +56,8 @@ initEvents = ->
     $ '#transposeSelector'
         .off()
         .on 'change', ->
+            alert "Sorry, this hasn't been done yet. It's on it's way, though, so watch this space!"
+            return
             increment = parseInt($(this).val(), 10)
 
             $('#song').fadeOut FADE_TIME, ->
