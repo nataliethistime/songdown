@@ -15,12 +15,12 @@ chordsLine = (line) ->
     # Do proper flat and sharp symbols.
     # IMPORTANT: the sharps are done first becuase there is a # in the HTML entity code for each of
     # the sharps and flats.
-    line = line.replace /#/g, '&#9839;'
-    line = line.replace /b/g, '&#9837;'
+    # line = line.replace /#/g, '&#9839;'
+    # line = line.replace /b/g, '&#9837;'
 
-    '<pre class="verse chords">' + line + '<br /></pre>'
+    '<pre class="verse chords">' + line + '</pre></br>'
 
-lyricsLine = (line) -> '<pre class="verse lyrics">' + line + '<br /></pre>'
+lyricsLine = (line) -> '<pre class="verse lyrics">' + line + '</pre><br />'
 verseBlock = (lines) -> '<span class="verse">' + lines.join("\n") + '</span>'
 
 

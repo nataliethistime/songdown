@@ -53,16 +53,24 @@ initEvents = ->
             changeTheme $(this).val()
 
 
+    previous = 0
     $ '#transposeSelector'
         .off()
         .on 'change', ->
-            alert "Sorry, this hasn't been done yet. It's on it's way, though, so watch this space!"
-            return
-            increment = parseInt($(this).val(), 10)
+
+            val = parseInt($(this).val(), 10)
+            increment = val - previous
+            previous = val
 
             $('#song').fadeOut FADE_TIME, ->
-                # TODO Do the transposing here!
-                $(this).html(data).fadeIn FADE_TIME
+
+                $ '.verse.chords'
+                    .each (i) ->
+                        line = $(@).text()
+                        line = transposeLine line, increment
+                        $(@).html line
+
+                $(this).fadeIn FADE_TIME
 
 
     # Note: a CSS media query handles the hiding of the sidebar and making
@@ -124,6 +132,44 @@ changeTheme = (url) ->
     localStorage.lastUsedTheme = url
     $ '#themeCssElement'
         .attr 'href', url
+
+
+transposeLine = (line, increment) ->
+    splitted = line.trim().split /\s+/
+
+    $.each splitted, (i) ->
+        original = @
+        transposed = transposeChord original, increment
+        line = line.replace original, transposed
+
+    line
+
+
+# This method is based mostly off of this SO answer http://stackoverflow.com/a/7936871.
+# I've modified it to be more coffee-like and to output flats instead of sharps.
+transposeChord = (chord, increment) ->
+
+    splitted = chord.split '/'
+    if splitted.length > 1
+        return $.map splitted, (chordPart) -> transposeChord chordPart, increment
+            .get()
+            .join '/'
+
+    scale = 'C Db D Eb E F Gb G Ab A Bb B'.split ' '
+    length = scale.length
+    root = chord.charAt 0
+
+    if chord.length > 1
+        if chord.charAt(1) == '#'
+            increment += 2 # counter act turning a sharp into flat.
+            root += 'b'
+        else if chord.charAt(1) == 'b'
+            root += 'b'
+
+    index = scale.indexOf root
+    newIndex = (index + increment + length) % length
+    scale[newIndex] + chord.substring root.length
+
 
 
 $ window.document
