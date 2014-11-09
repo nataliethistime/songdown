@@ -58,14 +58,14 @@ initEvents = ->
         .off()
         .on 'change', ->
 
-            val = parseInt($(this).val(), 10)
+            val = parseInt $(this).val(), 10
             increment = val - previous
             previous = val
 
             $('#song').fadeOut FADE_TIME, ->
 
                 $ '.verse.chords'
-                    .each (i) ->
+                    .each ->
                         line = $(@).text()
                         line = transposeLine line, increment
                         $(@).html line
@@ -107,6 +107,7 @@ changeViewMode = (num) ->
             $ '.verse.chords, .verse.lyrics'
                 .fadeIn FADE_TIME
 
+        # Show lyrics
         # Hide chords
         when 1
             $ '.verse.chords'
@@ -117,14 +118,14 @@ changeViewMode = (num) ->
 
 changeTheme = (url) ->
 
-    # Make sure the value stored in localStorage actually is a theme we can use
-    # and 'select' the theme in the dropdown box.
+    # Make sure the value stored in localStorage actually is a theme we can use.
     el = $('option', '#themeSelector').filter(->
         $(this).val() is url
     )[0]
 
     return unless el?
 
+    # Set it as the selected value.
     $ el
         .attr 'selected', true
 
@@ -135,14 +136,7 @@ changeTheme = (url) ->
 
 
 transposeLine = (line, increment) ->
-    splitted = line.trim().split /\s+/
-
-    $.each splitted, (i) ->
-        original = @
-        transposed = transposeChord original, increment
-        line = line.replace original, transposed
-
-    line
+    line.replace /\S+/g, (match) -> transposeChord match, increment
 
 
 # This method is based mostly off of this SO answer http://stackoverflow.com/a/7936871.
