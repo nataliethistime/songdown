@@ -6,11 +6,15 @@ Guitar lyrics and chords in a markdown-like syntax. [![Dependency Status](https:
 Changes
 =======
 
+### v1.1.0 (2014/11/11)
+- Implemented the transpose feature.
+- Started updating the version number in the package file (oops!).
+
 ### v1.0.1 (2014/11/01)
 - Adjusted the way the front-end site loads needed files.
 - Force the site to use SSL in production mode.
 - Massive changes to the internal setup of the site.
-- Added unimplemented warning to the transpose feature.
+- Added placeholder for the transpose feature.
 
 ### v1.0.0 (2014/10/25)
 - Initial version
