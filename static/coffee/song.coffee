@@ -38,13 +38,13 @@ initEvents = ->
     $ '#fontSize'
         .off()
         .on 'change', ->
-            setFontSize parseInt($(this).val(), 10)
+            setFontSize parseInt $(this).val(), 10
 
 
     $ '#viewSelector'
         .off()
         .on 'change', ->
-            changeViewMode parseInt($(this).val(), 10)
+            changeViewMode parseInt $(this).val(), 10
 
 
     $ '#themeSelector'
@@ -149,21 +149,22 @@ transposeChord = (chord, increment) ->
             .get()
             .join '/'
 
-    scale = 'C Db D Eb E F Gb G Ab A Bb B'.split ' '
-    length = scale.length
+    flatScale  = scale = 'C Db D Eb E F Gb G Ab A Bb B'.split ' '
+    sharpScale =         'C C# D D# E F F# G G# A A# B'.split ' '
     root = chord.charAt 0
 
     if chord.length > 1
-        if chord.charAt(1) == '#'
-            increment += 2 # counter act turning a sharp into flat.
+        if chord.charAt(1) is '#'
+            root += '#'
+            scale = sharpScale
+        else if chord.charAt(1) is 'b'
             root += 'b'
-        else if chord.charAt(1) == 'b'
-            root += 'b'
+            scale = flatScale
 
     index = scale.indexOf root
-    newIndex = (index + increment + length) % length
+    return '??' if index is -1 # I hope this never happens. :P
+    newIndex = (index + increment + scale.length) % scale.length
     scale[newIndex] + chord.substring root.length
-
 
 
 $ window.document
