@@ -9,4 +9,5 @@ var location = path.join(__dirname, '..', 'lib', 'app');
 require.cache = {};
 
 // Kick everything off!
-require(location);
+var app = require(location);
+app.start();
