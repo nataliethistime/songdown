@@ -7,7 +7,7 @@ Changes
 =======
 
 ### v1.2.0
-- Implemented copying of a local version of songdown-songs if available. Essentially allowing ofline editing of songdown files which can then be pushed to Github when ready.
+- Implemented using of a local version of songdown-songs if available. Essentially allowing off-line editing of songdown files which can then be pushed to Github when ready.
 
 ### v1.1.0 (2014/11/11)
 - Implemented the transpose feature.
