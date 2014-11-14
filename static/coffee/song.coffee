@@ -146,7 +146,6 @@ transposeChord = (chord, increment) ->
     splitted = chord.split '/'
     if splitted.length > 1
         return $.map splitted, (chordPart) -> transposeChord chordPart, increment
-            .get()
             .join '/'
 
     flatScale  = scale = 'C Db D Eb E F Gb G Ab A Bb B'.split ' '
