@@ -114,11 +114,12 @@ a.song-link {
 }
 
 
-
 @media print {
+
     /* Do this to avoid cutting verses off across pages. */
-    .verse {
+    .verse-wrap {
         page-break-inside: avoid;
+        color: red;
     }
 
     /* Hide sidebar */
@@ -131,7 +132,6 @@ a.song-link {
         width: 100%;
     }
 }
-
 
 /* Base level styles so that themes don't have repeated things */
 #song {
@@ -147,7 +147,8 @@ a.song-link {
 
 .verse.chords, .verse.lyrics {
     margin-left: 10%;
-    display: inline;
+    white-space: pre;
+    font-family: monospace;
 }
 
 .verse.title {

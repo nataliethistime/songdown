@@ -11,17 +11,12 @@ class Node
     toHtml: -> throw new Error 'override me please!!!'
 
 
-chordsLine = (line) ->
-    # Do proper flat and sharp symbols.
-    # IMPORTANT: the sharps are done first becuase there is a # in the HTML entity code for each of
-    # the sharps and flats.
-    # line = line.replace /#/g, '&#9839;'
-    # line = line.replace /b/g, '&#9837;'
+chordsLine = (line) -> '<div class="verse chords">' + line + '</div>'
+lyricsLine = (line) -> '<div class="verse lyrics">' + line + '</div>'
 
-    '<pre class="verse chords">' + line + '</pre></br>'
-
-lyricsLine = (line) -> '<pre class="verse lyrics">' + line + '</pre><br />'
-verseBlock = (lines) -> '<span class="verse">' + lines.join("\n") + '</span>'
+# The closing <div> here is opened at the start of a verse (before the header).
+# NOTE: we also have the \n's in there to make debugging easier.
+verseBlock = (lines) -> lines.join("\n") + '</div>\n\n'
 
 
 class VerseHeader extends Node
@@ -31,7 +26,8 @@ class VerseHeader extends Node
         @section = @section.replace Tokens.VERSE_CHORDS_HEADER, Tokens.VERSE_START
         @section = @section.replace Tokens.VERSE_LYRICS_HEADER, Tokens.VERSE_START
 
-        '<div class="verse title">' + @section + '</div>'
+        # The leading <div> here is closed at the end of the verse.
+        '<div class="verse-wrap"><div class="verse title">' + @section + '</div>'
 
 
 # This verse has chords and lyrics.
