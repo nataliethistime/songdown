@@ -12,7 +12,7 @@ module.exports.init = (app) ->
     getAssetsUrl = (req) ->
         if process.env.PRODUCTION?
             # HTTP is forced in production.
-            "https://songdown.herokuapp.com/static"
+            'https://songdown.herokuapp.com/static'
         else
             "#{req.protocol}://localhost:#{app.get 'port'}/static"
 
@@ -29,12 +29,16 @@ module.exports.init = (app) ->
         .get (req, res) ->
 
             song = new Song req.param('fname'), songDir
-            crshUrl = req.crsh.libs.name
 
-            res.send templates.song
-                artist: song.artist
-                assetsUrl: getAssetsUrl(req)
-                html: song.toHtml()
-                track: song.track
-                fname: song.fname
-                crshUrl: crshUrl
+            if song.exists()
+                crshUrl = req.crsh.libs.name
+
+                res.send templates.song
+                    artist: song.artist
+                    assetsUrl: getAssetsUrl(req)
+                    html: song.toHtml()
+                    track: song.track
+                    fname: song.fname
+                    crshUrl: crshUrl
+            else
+                res.send 'Song not found.'
