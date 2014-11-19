@@ -6,7 +6,7 @@ Guitar lyrics and chords in a markdown-like syntax. [![Dependency Status](https:
 Changes
 =======
 
-### v1.2.0 (2014/11/19)
+### v1.2.0 (2014/11/20)
 - Implemented using of a local version of songdown-songs if available. Essentially allowing off-line editing of songdown files which can then be pushed to Github when ready.
 - Fixed a bug where a split chord would cause transposing to fail.
 - Fixed a bug where verses were split across pages when printing.
