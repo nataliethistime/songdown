@@ -11,8 +11,8 @@ class Node
     toHtml: -> throw new Error 'override me please!!!'
 
 
-chordsLine = (line) -> '<div class="verse chords">' + line + '</div>'
-lyricsLine = (line) -> '<div class="verse lyrics">' + line + '</div>'
+chordsLine = (line) -> '<div class="verse-chords">' + line + '</div>'
+lyricsLine = (line) -> '<div class="verse-lyrics">' + line + '</div>'
 
 # The closing <div> here is opened at the start of a verse (before the header).
 # NOTE: we also have the \n's in there to make debugging easier.
@@ -27,7 +27,7 @@ class VerseHeader extends Node
         @section = @section.replace Tokens.VERSE_LYRICS_HEADER, Tokens.VERSE_START
 
         # The leading <div> here is closed at the end of the verse.
-        '<div class="verse-wrap"><div class="verse title">' + @section + '</div>'
+        '<div class="verse-wrap"><div class="verse-title">' + @section + '</div>'
 
 
 # This verse has chords and lyrics.
@@ -78,12 +78,12 @@ class GotoVerse extends Node
         # Now that we've extracted the important information from the original line,
         # let's get some HTML on the grill! :D
 
-        title = '<span class="goto title">' + titleStr + '</span>'
+        title = '<span class="goto-title">' + titleStr + '</span>'
         dynamics = if dynamicsMatch?
-            '<span class="goto dynamics">' + dynamicsMatch + '</span>'
+            '<span class="goto-dynamics">' + dynamicsMatch + '</span>'
         else ''
         repeat = if repeatMatch?
-            '<span class="goto repeat">' + repeatMatch + '</span>'
+            '<span class="goto-repeat">' + repeatMatch + '</span>'
         else ''
 
         # The final thing that we've made.

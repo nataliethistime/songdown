@@ -145,12 +145,12 @@ a.song-link {
     float: right;
 }
 
-.verse.chords, .verse.lyrics {
+.verse-chords, .verse-lyrics {
     margin-left: 10%;
     white-space: pre;
     font-family: monospace;
 }
 
-.verse.title {
+.verse-title {
     margin-left: 5%;
 }

@@ -64,7 +64,7 @@ initEvents = ->
 
             $('#song').fadeOut FADE_TIME, ->
 
-                $ '.verse.chords'
+                $ '.verse-chords'
                     .each ->
                         line = $(@).text()
                         line = transposeLine line, increment
@@ -83,7 +83,7 @@ initEvents = ->
 
 
 initAnchors = ->
-    window.addAnchors '.verse.title'
+    window.addAnchors '.verse-title'
 
 
 initTheme = ->
@@ -104,15 +104,15 @@ changeViewMode = (num) ->
     switch num
         # Show lyrics and chords
         when 0
-            $ '.verse.chords, .verse.lyrics'
+            $ '.verse-chords, .verse-lyrics'
                 .fadeIn FADE_TIME
 
         # Show lyrics
         # Hide chords
         when 1
-            $ '.verse.chords'
+            $ '.verse-chords'
                 .fadeOut FADE_TIME
-            $ '.verse.lyrics'
+            $ '.verse-lyrics'
                 .fadeIn FADE_TIME
 
 
