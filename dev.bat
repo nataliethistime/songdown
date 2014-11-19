@@ -1,0 +1,1 @@
+node script/start.js

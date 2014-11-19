@@ -9,6 +9,9 @@ Changes
 ### v1.2.0
 - Implemented using of a local version of songdown-songs if available. Essentially allowing off-line editing of songdown files which can then be pushed to Github when ready.
 - Fixed a bug where a split chord would cause transposing to fail.
+- Fixed a bug where verses were split across pages when printing.
+- More cleaning of HTML so that debugging is easier.
+- Created quick launch script.
 
 ### v1.1.0 (2014/11/11)
 - Implemented the transpose feature.
