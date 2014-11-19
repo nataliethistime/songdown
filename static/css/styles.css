@@ -119,7 +119,6 @@ a.song-link {
     /* Do this to avoid cutting verses off across pages. */
     .verse-wrap {
         page-break-inside: avoid;
-        color: red;
     }
 
     /* Hide sidebar */
