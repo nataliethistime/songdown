@@ -1,1 +1,1 @@
-node script/start.js
+@node script/start.js
