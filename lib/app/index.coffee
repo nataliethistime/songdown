@@ -16,7 +16,7 @@ del = require 'del'
 path = require 'path'
 
 downloadSongs = (callback) ->
-    down 'Vasari/songdown-songs', app.get('songDir'), (err) ->
+    down '1Vasari/songdown-songs', app.get('songDir'), (err) ->
 
         if err and isEmptySync app.get 'songDir'
             throw new Error err
