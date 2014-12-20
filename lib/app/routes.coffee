@@ -11,7 +11,7 @@ module.exports.init = (app) ->
 
     getAssetsUrl = (req) ->
         if process.env.PRODUCTION?
-            # HTTP is forced in production.
+            # HTTPS is forced in production.
             'https://songdown.herokuapp.com/static'
         else
             "#{req.protocol}://localhost:#{app.get 'port'}/static"
@@ -23,6 +23,7 @@ module.exports.init = (app) ->
             songs = loadSongs songDir
             crshUrl = req.crsh.libs.name
             res.end templates.index {songs, assetsUrl: getAssetsUrl(req), crshUrl}
+
 
     # Song view
     app.route '/song/:fname'

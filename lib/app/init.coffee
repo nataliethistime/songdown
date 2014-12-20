@@ -6,6 +6,8 @@ app = express()
 logfmt = require 'logfmt'
 Crsh = require 'crsh'
 
+SongCache = require './song-cache'
+
 # Do some stuff to force HTTPS all the time.
 forceSsl = (req, res, next) ->
     if req.headers['x-forwarded-proto'] isnt 'https'
@@ -34,6 +36,7 @@ app.use '/static', express.static staticDir
 app.use logfmt.requestLogger()
 
 app.set 'songDir', path.join __dirname, '..', '..', 'songs'
+app.set 'songCache', new SongCache app.get 'songDir'
 app.set 'port', process.env.PORT or 5000
 
 module.exports = app
