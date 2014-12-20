@@ -9,6 +9,7 @@ Changes
 ### v1.2.1
 - Fixed errors when a song didn't exist.
 - Remove some useless stuff.
+- Fixed up some bad code. :D
 
 ### v1.2.0 (2014/11/20)
 - Implemented using of a local version of songdown-songs if available. Essentially allowing off-line editing of songdown files which can then be pushed to Github when ready.
