@@ -8,12 +8,12 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Vasari/songdown/issues"
+    "url": "https://github.com/1vasari/songdown/issues"
   },
   "engines": {
     "node": "0.10.x"
   },
-  "homepage": "https://github.com/Vasari/songdown",
+  "homepage": "https://github.com/1vasari/songdown",
   "dependencies": {
     "coffee-script": "1.8.0",
     "crsh": "0.3.2",
