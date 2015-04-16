@@ -1,10 +1,8 @@
-songdown
-========
+# songdown
 
-Guitar lyrics and chords in a markdown-like syntax. **Note:** *this project is out-dated and has been replaced. The new version can be found at [songdown-app](https://github.com/1vasari/songdown-app).
+Guitar lyrics and chords in a markdown-like syntax. **Note:** *this project is out-dated and has been replaced. The new version can be found at [songdown-app](https://github.com/1vasari/songdown-app).*
 
-Changes
-=======
+# Changes
 
 ### v1.2.1
 - Fixed errors when a song didn't exist.
@@ -31,8 +29,7 @@ Changes
 ### v1.0.0 (2014/10/25)
 - Initial version
 
-License
-=======
+# License
 
-This project is made with :heart: under the MIT license by Nathan McCallum.
+This project is made with love, under the MIT license, by [@1vasari](https://twitter.com/1vasari). :heart:
 
